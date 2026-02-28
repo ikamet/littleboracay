@@ -12,39 +12,90 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+
+		<main class="container">
+
+			<!-- HERO SECTION -->
+			<section class="hero">
+				<h1>Little Boracay Calatagan, Batangas</h1>
+				<p>
+					Discover the famous Little Boracay sandbar in Calatagan, Batangas — 
+					crystal-clear waters, white sand shores, floating cottages, and scenic boat tours 
+					perfect for day trips and weekend escapes.
+				</p>
+			</section>
+
+			<!-- ABOUT DESTINATION -->
+			<section>
+				<h2>What is Little Boracay?</h2>
+				<p>
+					Little Boracay is a popular sandbar destination located in Calatagan, Batangas. 
+					Known for its shallow turquoise waters and fine white sand, it offers visitors 
+					a Boracay-like experience without leaving Luzon.
+				</p>
+				<p>
+					Accessible by boat, this coastal attraction is ideal for swimming, island hopping, 
+					and relaxing on floating bamboo cottages.
+				</p>
+			</section>
+
+			<!-- ACTIVITIES -->
+			<section>
+				<h2>Things to Do in Little Boracay</h2>
+				<ul>
+					<li>Boat tours to the sandbar</li>
+					<li>Floating cottage rentals</li>
+					<li>Swimming in shallow clear waters</li>
+					<li>Snorkeling and water activities</li>
+					<li>Group day trips and beach gatherings</li>
+				</ul>
+			</section>
+
+			<!-- HOW TO GET THERE -->
+			<section>
+				<h2>How to Get to Little Boracay Calatagan</h2>
+				<p>
+					Visitors travel to Calatagan town proper and arrange boat transfers to the sandbar. 
+					Local boat operators provide round-trip access depending on tide conditions and weather.
+				</p>
+				<p>
+					The destination is approximately 3–4 hours from Metro Manila by land.
+				</p>
+			</section>
+
+			<!-- WHY VISIT -->
+			<section>
+				<h2>Why Visit Little Boracay?</h2>
+				<ul>
+					<li>Closer alternative to Boracay Island</li>
+					<li>Affordable boat and cottage rentals</li>
+					<li>Ideal for family outings and group trips</li>
+					<li>Scenic coastal views and sandbar experience</li>
+				</ul>
+			</section>
+
+			<!-- FAQ -->
+			<section>
+				<h2>Frequently Asked Questions</h2>
+
+				<h3>Is Little Boracay a resort?</h3>
+				<p>
+					No. Little Boracay is a sandbar destination accessed by boat. It is not a traditional beach resort.
+				</p>
+
+				<h3>Are boat tours required?</h3>
+				<p>
+					Yes. Visitors must arrange boat transport from Calatagan to reach the sandbar.
+				</p>
+
+				<h3>Is it suitable for children?</h3>
+				<p>
+					Yes, shallow waters make it family-friendly, though supervision is recommended.
+				</p>
+			</section>
+
 		</main>
+
 		<Footer />
 	</body>
 </html>
