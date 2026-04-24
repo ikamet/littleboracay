@@ -1,111 +1,107 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = [
+  {
+    slug: "how-to-get-to-little-boracay",
+    title: "How to Get to Little Boracay from Manila: Complete 2025 Guide",
+    date: "2025-03-01",
+    description: "Step-by-step directions from Metro Manila to the Little Boracay sandbar in Calatagan, Batangas — including the drive, boat transfer, and practical tips.",
+    tags: ["Travel Guide", "Getting There"]
+  },
+  {
+    slug: "little-boracay-vs-boracay",
+    title: "Little Boracay vs. Boracay Island: What's the Difference?",
+    date: "2025-02-15",
+    description: "A detailed comparison of Little Boracay in Calatagan, Batangas and Boracay Island in Aklan — two white sand destinations with very different characteristics.",
+    tags: ["Comparison", "Travel Info"]
+  },
+  {
+    slug: "floating-cottages-experience",
+    title: "What It's Like to Rent a Floating Cottage at Little Boracay",
+    date: "2025-01-20",
+    description: "A full breakdown of the floating bamboo cottage experience at Little Boracay sandbar — what to expect, how to book, and tips for making the most of your day.",
+    tags: ["Experience", "Cottages"]
+  },
+  {
+    slug: "best-time-to-visit",
+    title: "Best Time to Visit Little Boracay Calatagan Batangas",
+    date: "2024-12-10",
+    description: "When is the best time to visit Little Boracay? Complete guide to seasons, tides, time of day, and planning your trip for the best sandbar experience.",
+    tags: ["Planning", "Travel Tips"]
+  },
+  {
+    slug: "calatagan-batangas-guide",
+    title: "Complete Guide to Calatagan, Batangas: Beaches, Resorts & Day Trips",
+    date: "2024-11-05",
+    description: "Everything to know about Calatagan, Batangas — including Little Boracay sandbar, CaSoBe, Stilts Resort, beaches, and travel tips for planning a Calatagan trip.",
+    tags: ["Destination Guide", "Calatagan"]
+  },
+  {
+    slug: "what-to-bring-to-little-boracay",
+    title: "What to Bring to Little Boracay: The Ultimate Packing List",
+    date: "2024-10-01",
+    description: "Don't visit Little Boracay unprepared. Full packing list with essentials, beach gear, food recommendations, and tips for a comfortable sandbar day trip.",
+    tags: ["Travel Tips", "Packing"]
+  }
+];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+<BaseLayout
+  title="Little Boracay Blog | Travel Guides, Tips & Visitor Experiences"
+  description="Travel guides, visitor tips, and destination information about Little Boracay sandbar in Calatagan, Batangas. Plan your perfect trip with our expert guides."
+>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="badge badge-ocean">Blog</span>
+    <h1>Little Boracay Travel Guides</h1>
+    <p class="page-lead">Destination guides, travel tips, and visitor information for Little Boracay sandbar in Calatagan, Batangas.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="blog-grid">
+      {posts.map(post => (
+        <article class="blog-card card">
+          <div class="blog-card-body">
+            <div class="blog-tags">
+              {post.tags.map(tag => <span class="tag">{tag}</span>)}
+            </div>
+            <h2><a href={`/blog/${post.slug}`}>{post.title}</a></h2>
+            <p>{post.description}</p>
+            <div class="blog-meta">
+              <time datetime={post.date}>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.page-hero {
+  padding: 60px 0 40px;
+  background: linear-gradient(to bottom, var(--color-ocean-light), var(--color-sand));
+}
+.page-hero h1 { font-size: 2.4rem; margin: 16px 0 16px; }
+.page-lead { font-size: 1.05rem; color: #444; max-width: 600px; }
+
+.blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.blog-card { padding: 0; }
+.blog-card-body { padding: 28px; }
+.blog-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.blog-card h2 { font-size: 1.15rem; margin-bottom: 10px; line-height: 1.35; }
+.blog-card h2 a { color: var(--color-ink); text-decoration: none; }
+.blog-card h2 a:hover { color: var(--color-ocean); }
+.blog-card p { font-size: 0.9rem; color: var(--color-muted); line-height: 1.6; margin-bottom: 16px; }
+.blog-meta { font-size: 0.8rem; color: var(--color-muted); }
+
+@media (max-width: 700px) {
+  .blog-grid { grid-template-columns: 1fr; }
+}
+</style>
