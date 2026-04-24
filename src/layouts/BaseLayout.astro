@@ -1,0 +1,441 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string;
+  type?: string;
+  noShell?: boolean;
+}
+
+const {
+  title = "Little Boracay Calatagan Batangas | Sandbar & Tours",
+  description = "Explore Little Boracay in Calatagan, Batangas. Boat tours, floating cottages, crystal waters, white sandbars, and water activities near Calatagan beach.",
+  image = "/og-image.jpg",
+  type = "website",
+  noShell = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content={type} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={socialImage} />
+  <meta property="og:locale" content="en_PH" />
+  <meta property="og:site_name" content="Little Boracay" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@littleboracay" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={socialImage} />
+
+  <!-- Geo Meta (AEO / GEO signals) -->
+  <meta name="geo.region" content="PH-BAT" />
+  <meta name="geo.placename" content="Calatagan, Batangas, Philippines" />
+  <meta name="geo.position" content="13.8198041;120.6157737" />
+  <meta name="ICBM" content="13.8198041, 120.6157737" />
+
+  <!-- Structured Data: TouristAttraction with all review platforms -->
+  <script type="application/ld+json">{JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "TouristAttraction",
+    "name": "Little Boracay",
+    "description": "A natural sandbar destination in Calatagan, Batangas, Philippines known for floating bamboo cottages, shallow turquoise waters, and boat tours.",
+    "url": "https://littleboracay.com",
+    "image": "https://littleboracay.com/og-image.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Calatagan",
+      "addressRegion": "Batangas",
+      "addressCountry": "PH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "13.8198041",
+      "longitude": "120.6157737"
+    },
+    "hasMap": "https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "08:00",
+        "closes": "17:00"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.3",
+      "reviewCount": "3",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "sameAs": [
+      "https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8",
+      "https://facebook.com/littleboracay",
+      "https://facebook.com/groups/littleboracay",
+      "https://instagram.com/littleboracay",
+      "https://twitter.com/littleboracay",
+      "https://www.tripadvisor.com/Attraction_Review-g1209360-d17381413-Reviews-Little_Boracay-Calatagan_Batangas_Province_Calabarzon_Region_Luzon.html"
+    ],
+    "touristType": ["BeachGoers", "FamilyTravelers", "DayTrippers", "Photographers"],
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Floating Bamboo Cottages", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Boat Tours", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Swimming", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Snorkeling", "value": true }
+    ]
+  })}</script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Sitemap -->
+  <link rel="sitemap" href="/sitemap-index.xml" />
+</head>
+<body data-noshell={noShell ? "true" : "false"}>
+
+<!-- ===== NAVIGATION ===== -->
+<header class="site-header" id="site-header">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo" aria-label="Little Boracay Home">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="16" cy="16" r="16" fill="var(--color-ocean)"/>
+        <path d="M8 20c2-4 4-8 8-8s6 4 8 8" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M6 22h20" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        <circle cx="16" cy="11" r="2.5" fill="var(--color-gold)"/>
+      </svg>
+      <span class="nav-wordmark">Little Boracay</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="/" class:list={["nav-link", { active: currentPath === '/' }]}>Home</a>
+      <a href="/visit" class:list={["nav-link", { active: currentPath === '/visit' }]}>Plan a Visit</a>
+      <a href="/sandbar" class:list={["nav-link", { active: currentPath === '/sandbar' }]}>The Sandbar</a>
+      <a href="/cottages" class:list={["nav-link", { active: currentPath === '/cottages' }]}>Cottages</a>
+      <a href="/blog" class:list={["nav-link", { active: currentPath.startsWith('/blog') }]}>Blog</a>
+      <a href="/about" class:list={["nav-link", { active: currentPath === '/about' }]}>About</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="/visit" class="btn btn-primary btn-sm">Plan Your Trip</a>
+    </div>
+
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav>
+      <a href="/">Home</a>
+      <a href="/visit">Plan a Visit</a>
+      <a href="/sandbar">The Sandbar</a>
+      <a href="/cottages">Cottages</a>
+      <a href="/blog">Blog</a>
+      <a href="/about">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+  <slot />
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="nav-logo">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="16" fill="var(--color-ocean)"/>
+          <path d="M8 20c2-4 4-8 8-8s6 4 8 8" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="16" cy="11" r="2.5" fill="var(--color-gold)"/>
+        </svg>
+        <span class="nav-wordmark">Little Boracay</span>
+      </a>
+      <p class="footer-tagline">Calatagan's most iconic sandbar destination — floating cottages, crystal waters, and unforgettable day trips from Manila.</p>
+      <div class="social-links">
+        <a href="https://facebook.com/littleboracay" aria-label="Facebook Page" target="_blank" rel="noopener" title="Facebook Page">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://facebook.com/groups/littleboracay" aria-label="Facebook Community Group" target="_blank" rel="noopener" title="FB Community Group">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </a>
+        <a href="https://instagram.com/littleboracay" aria-label="Instagram" target="_blank" rel="noopener" title="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+        </a>
+        <a href="https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8" aria-label="Google Business Profile" target="_blank" rel="noopener" title="Find us on Google Maps">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#EA4335"/></svg>
+        </a>
+        <a href="https://www.tripadvisor.com/Attraction_Review-g1209360-d17381413-Reviews-Little_Boracay-Calatagan_Batangas_Province_Calabarzon_Region_Luzon.html" aria-label="TripAdvisor Reviews" target="_blank" rel="noopener" title="TripAdvisor Reviews">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="#00AF87"/><circle cx="12" cy="12" r="5" fill="white"/><circle cx="12" cy="12" r="2.5" fill="#00AF87"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/sandbar">The Sandbar</a></li>
+          <li><a href="/cottages">Floating Cottages</a></li>
+          <li><a href="/visit">Plan a Visit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Travel Info</h4>
+        <ul>
+          <li><a href="/visit#how-to-get-there">How to Get There</a></li>
+          <li><a href="/visit#best-time">Best Time to Visit</a></li>
+          <li><a href="/visit#what-to-bring">What to Bring</a></li>
+          <li><a href="/faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community & Reviews</h4>
+        <ul>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="https://facebook.com/littleboracay" target="_blank" rel="noopener">Facebook Page</a></li>
+          <li><a href="https://facebook.com/groups/littleboracay" target="_blank" rel="noopener">FB Community Group</a></li>
+          <li><a href="https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8" target="_blank" rel="noopener">Google Maps / GBP</a></li>
+          <li><a href="https://www.tripadvisor.com/Attraction_Review-g1209360-d17381413-Reviews-Little_Boracay-Calatagan_Batangas_Province_Calabarzon_Region_Luzon.html" target="_blank" rel="noopener">TripAdvisor</a></li>
+          <li><a href="https://www.trustpilot.com/review/littleboracay.com" target="_blank" rel="noopener">Trustpilot</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© {new Date().getFullYear()} Little Boracay. All rights reserved. | Calatagan, Batangas, Philippines</p>
+      <p class="footer-disclaimer">Little Boracay is a natural sandbar destination. Always check weather and tide conditions before visiting.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const header = document.getElementById('site-header');
+
+  toggle?.addEventListener('click', () => {
+    const open = menu?.getAttribute('aria-hidden') === 'true';
+    menu?.setAttribute('aria-hidden', open ? 'false' : 'true');
+    toggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle?.classList.toggle('open', open);
+  });
+
+  window.addEventListener('scroll', () => {
+    header?.classList.toggle('scrolled', window.scrollY > 20);
+  });
+</script>
+
+<style>
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(245, 239, 230, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.site-header.scrolled {
+  border-bottom-color: var(--color-border);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  height: var(--nav-height);
+  gap: 32px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+.nav-link {
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-link:hover, .nav-link.active {
+  background: var(--color-ocean-light);
+  color: var(--color-ocean-deep);
+  text-decoration: none;
+}
+.nav-cta { margin-left: 16px; }
+.btn-sm { padding: 8px 20px; font-size: 0.875rem; }
+
+/* Hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: auto;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-ink);
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  padding: 16px 24px 24px;
+  border-top: 1px solid var(--color-border);
+}
+.mobile-menu[aria-hidden="false"] { display: block; }
+.mobile-menu nav { display: flex; flex-direction: column; gap: 4px; }
+.mobile-menu a {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  color: var(--color-ink);
+  font-weight: 500;
+  text-decoration: none;
+}
+.mobile-menu a:hover { background: var(--color-ocean-light); }
+
+/* Footer */
+.site-footer {
+  background: var(--color-ink);
+  color: rgba(255,255,255,0.75);
+  margin-top: 80px;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 64px;
+  padding: 64px 24px 48px;
+}
+.footer-brand .nav-wordmark { color: white; }
+.footer-tagline {
+  margin-top: 16px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.6);
+  max-width: 340px;
+}
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.7);
+  transition: background 0.15s, color 0.15s;
+}
+.social-links a:hover {
+  background: var(--color-ocean);
+  color: white;
+  text-decoration: none;
+}
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding-top: 4px;
+}
+.footer-links h4 {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 16px;
+}
+.footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-links a {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-links a:hover { color: white; text-decoration: none; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 20px 24px;
+  text-align: center;
+}
+.footer-bottom p {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.8;
+}
+.footer-disclaimer { margin-top: 4px; }
+
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  .footer-inner { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 32px; }
+  .footer-links { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .footer-links { grid-template-columns: 1fr; }
+}
+</style>
+</body>
+</html>
