@@ -4,5 +4,8 @@ import mdx from '@astrojs/mdx';
 
 export default defineConfig({
   site: 'https://littleboracay.com',
-  integrations: [sitemap(), mdx()],
+  integrations: [
+    sitemap(),
+    mdx(),
+  ],
 });
