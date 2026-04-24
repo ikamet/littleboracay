@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Contact Little Boracay | Book Floating Cottages & Boat Tours"
+  description="Contact Little Boracay to book floating cottages, boat tours, or group visits to the sandbar in Calatagan, Batangas. Inquire about availability, pricing, and group packages."
+>
+<div class="page-hero">
+  <div class="container">
+    <span class="overline">Contact &amp; Booking</span>
+    <h1>Book Your Visit to Little Boracay</h1>
+    <p class="page-lead">Ready to visit the sandbar? Fill in your details and we'll get back to you with everything you need — availability, pricing, and your full visitor guide.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-forms">
+
+        <!-- BOOKING FORM -->
+        <div class="form-panel" id="booking">
+          <div class="form-panel-head">
+            <h2>Plan Your Visit</h2>
+            <p>Tell us when you're coming and we'll send you everything you need.</p>
+          </div>
+          <form id="planForm" class="form-body" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="p-name">Your Name *</label>
+                <input type="text" id="p-name" placeholder="Juan dela Cruz" required />
+              </div>
+              <div class="form-group">
+                <label for="p-email">Email Address *</label>
+                <input type="email" id="p-email" placeholder="juan@email.com" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="p-phone">Phone / WhatsApp</label>
+                <input type="tel" id="p-phone" placeholder="+63 9xx xxx xxxx" />
+              </div>
+              <div class="form-group">
+                <label for="p-date">Preferred Visit Date</label>
+                <input type="date" id="p-date" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="p-guests">Group Size</label>
+                <select id="p-guests">
+                  <option value="">Select...</option>
+                  <option>Solo / couple (1–2)</option>
+                  <option>Small group (3–5)</option>
+                  <option>Medium group (6–10)</option>
+                  <option>Large group (11–20)</option>
+                  <option>Big event (20+)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="p-type">Type of Visit</label>
+                <select id="p-type">
+                  <option value="">Select...</option>
+                  <option>Day trip with floating cottage</option>
+                  <option>Family outing</option>
+                  <option>Barkada / friend group</option>
+                  <option>Corporate / team building</option>
+                  <option>Photography / drone shoot</option>
+                  <option>Special occasion / celebration</option>
+                  <option>School / educational trip</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="p-from">Travelling from</label>
+              <input type="text" id="p-from" placeholder="e.g. Makati, BGC, Quezon City, Pasig..." />
+            </div>
+            <div class="form-group">
+              <label for="p-notes">Special requests or questions</label>
+              <textarea id="p-notes" rows="3" placeholder="Dietary needs, accessibility requirements, large group logistics, accommodation enquiries..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-navy" style="width:100%;justify-content:center;" id="planBtn">
+              Send My Visit Enquiry
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <div class="form-success" id="planOk">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <div>
+                <strong>Enquiry received!</strong>
+                <p>We'll get back to you within 24 hours with availability and everything you need for your visit. See you at the sandbar!</p>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="form-panel" id="message" style="margin-top:24px;">
+          <div class="form-panel-head" style="background:var(--bg-alt2);border-bottom:1px solid var(--border);">
+            <h2 style="color:var(--text);">Send a General Message</h2>
+            <p style="color:var(--text-2);">Questions, partnerships, media enquiries, or anything else.</p>
+          </div>
+          <form id="contactForm" class="form-body" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="c-name">Full Name *</label>
+                <input type="text" id="c-name" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <label for="c-email">Email Address *</label>
+                <input type="email" id="c-email" placeholder="your@email.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="c-sub">Subject</label>
+              <select id="c-sub">
+                <option value="">Select a topic...</option>
+                <option>Boat tour &amp; cottage booking</option>
+                <option>Group / corporate event</option>
+                <option>Photography / drone inquiry</option>
+                <option>Directions &amp; travel help</option>
+                <option>General question</option>
+                <option>Partnership / media enquiry</option>
+                <option>Website feedback</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="c-msg">Message *</label>
+              <textarea id="c-msg" rows="5" placeholder="Tell us what you'd like to know..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-outline" style="width:100%;justify-content:center;" id="contactBtn">
+              Send Message
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <div class="form-success" id="contactOk">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <div>
+                <strong>Message received!</strong>
+                <p>We'll reply within 24 hours. You can also reach us directly on Facebook at @littleboracay.</p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="contact-sidebar">
+        <div class="sidebar-info">
+          <h3>Contact Information</h3>
+          <div class="contact-channels">
+            <a href="https://tiktok.com/@littleboracay" target="_blank" rel="noopener" class="contact-ch">
+              <div class="ch-icon" style="background:#010101"><svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></div>
+              <div><strong>TikTok</strong><span>@littleboracay</span></div>
+            </a>
+            <a href="https://facebook.com/littleboracay" target="_blank" rel="noopener" class="contact-ch">
+              <div class="ch-icon" style="background:#1877F2"><svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+              <div><strong>Facebook Page</strong><span>@littleboracay</span></div>
+            </a>
+            <a href="https://facebook.com/groups/littleboracay" target="_blank" rel="noopener" class="contact-ch">
+              <div class="ch-icon" style="background:#1877F2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <div><strong>Facebook Group</strong><span>FB Community Group</span></div>
+            </a>
+            <a href="https://instagram.com/littleboracay" target="_blank" rel="noopener" class="contact-ch">
+              <div class="ch-icon" style="background:linear-gradient(135deg,#f09433,#dc2743,#bc1888)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="white" stroke="none"/></svg></div>
+              <div><strong>Instagram</strong><span>@littleboracay</span></div>
+            </a>
+            <a href="https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8" target="_blank" rel="noopener" class="contact-ch">
+              <div class="ch-icon" style="background:#EA4335"><svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+              <div><strong>Google Maps</strong><span>Find us &amp; leave a review</span></div>
+            </a>
+            <a href="https://www.tripadvisor.com/Attraction_Review-g1209360-d17381413-Reviews-Little_Boracay-Calatagan_Batangas_Province_Calabarzon_Region_Luzon.html" target="_blank" rel="noopener" class="contact-ch">
+              <div class="ch-icon" style="background:#00AF87"><svg width="15" height="15" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="white" opacity=".2"/><circle cx="10" cy="10" r="5" fill="white"/><circle cx="10" cy="10" r="2.5" fill="#00AF87"/></svg></div>
+              <div><strong>TripAdvisor</strong><span>★ 4.3 · Travelers' Choice</span></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="sidebar-location">
+          <div class="location-label">📍 Location</div>
+          <p>Little Boracay Sandbar<br>Calatagan, Batangas<br>Calabarzon Region, Luzon<br>Philippines</p>
+          <p style="margin-top:8px;font-size:.78rem;color:var(--text-3);">Coordinates: 13.8198°N, 120.6158°E<br>Open daily 8:00 AM – 5:00 PM</p>
+        </div>
+
+        <div class="sidebar-tips">
+          <h4>Booking Tips</h4>
+          <ul>
+            <li>Book <strong>2–3 days ahead</strong> on weekends</li>
+            <li>Large groups (10+) should book <strong>at least a week ahead</strong></li>
+            <li>Always <strong>confirm the day before</strong> — weather can affect boat operations</li>
+            <li>Bring <strong>cash (PHP)</strong> — most operators don't accept cards</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  window.addEventListener('load', () => {
+    (window as any).bindForm?.('planForm','planBtn','planOk');
+    (window as any).bindForm?.('contactForm','contactBtn','contactOk');
+  });
+</script>
+</BaseLayout>
+
+<style>
+.page-hero { padding: 60px 0 40px; background: linear-gradient(to bottom, rgba(13,43,107,.06), var(--bg)); border-bottom: 1px solid var(--border); }
+.page-hero h1 { font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 800; color: var(--text); margin: 10px 0 14px; letter-spacing: -.03em; }
+.page-lead { font-size: 1.05rem; color: var(--text-2); max-width: 620px; line-height: 1.7; }
+.contact-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: start; }
+.form-panel { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--sh-md); }
+.form-panel-head { padding: 22px 24px; background: var(--navy); }
+.form-panel-head h2 { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 5px; }
+.form-panel-head p { font-size: .84rem; color: rgba(255,255,255,.65); margin: 0; }
+.form-body { padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; }
+.contact-sidebar { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 16px; }
+.sidebar-info { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 20px 22px; }
+.sidebar-info h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 14px; }
+.contact-channels { display: flex; flex-direction: column; gap: 8px; }
+.contact-ch { display: flex; align-items: center; gap: 12px; padding: 10px 12px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--r); text-decoration: none; transition: border-color .15s; }
+.contact-ch:hover { border-color: var(--navy); text-decoration: none; }
+.ch-icon { width: 34px; height: 34px; border-radius: var(--r); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.contact-ch strong { display: block; font-size: .84rem; color: var(--text); font-weight: 600; }
+.contact-ch span { font-size: .74rem; color: var(--text-3); }
+.sidebar-location { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 18px 20px; }
+.location-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--navy); margin-bottom: 8px; }
+.sidebar-location p { font-size: .875rem; color: var(--text); line-height: 1.7; margin: 0; }
+.sidebar-tips { background: rgba(13,43,107,.05); border: 1px solid rgba(13,43,107,.12); border-radius: var(--r-lg); padding: 18px 20px; }
+.sidebar-tips h4 { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--navy); margin-bottom: 12px; }
+.sidebar-tips ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.sidebar-tips li { font-size: .875rem; color: var(--text-2); padding-left: 14px; position: relative; }
+.sidebar-tips li::before { content: '·'; position: absolute; left: 0; color: var(--navy); font-weight: 700; }
+@media (max-width: 900px) { .contact-layout { grid-template-columns: 1fr; } .contact-sidebar { position: static; } }
+</style>

@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "TouristDestination",
+  "name": "Calatagan, Batangas",
+  "description": "Calatagan is a coastal municipality in Batangas, Philippines, known for its beaches, sandbars, and proximity to Metro Manila.",
+  "address": { "@type": "PostalAddress", "addressLocality": "Calatagan", "addressRegion": "Batangas", "addressCountry": "PH" },
+  "geo": { "@type": "GeoCoordinates", "latitude": "13.8333", "longitude": "120.6333" },
+  "touristType": ["BeachGoers", "FamilyTravelers", "DayTrippers"]
+};
+---
+<BaseLayout
+  title="Calatagan Batangas Travel Guide | Beaches, Sandbars & Things to Do"
+  description="Complete travel guide to Calatagan, Batangas. Discover Little Boracay sandbar, CaSoBe, Stilts Resort, beaches, and everything to do in Calatagan near Manila."
+  schema={schema}
+>
+<div class="page-hero">
+  <div class="container">
+    <span class="overline">Destination Guide</span>
+    <h1>Calatagan, Batangas Travel Guide</h1>
+    <p class="page-lead">Calatagan is one of Batangas' most rewarding coastal destinations — home to Little Boracay sandbar, white sand beaches, and some of the clearest waters in southern Luzon.</p>
+  </div>
+</div>
+<TrustStrip />
+<section class="section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <h2 class="section-title">About Calatagan, Batangas</h2>
+        <p><strong>Calatagan</strong> is a municipality located on the southwestern tip of <strong>Batangas Province</strong> in the Calabarzon region of Luzon, Philippines. It faces the South China Sea to the west and is known for its calm coastal waters, white sand beaches, and several popular destinations including <strong>Little Boracay sandbar</strong>.</p>
+        <p>Calatagan is approximately <strong>130–150 kilometres from Metro Manila</strong>, making it one of the most accessible coastal destinations for Manila-based travelers. The drive via the South Luzon Expressway (SLEX) and STAR Tollway takes 3–4 hours depending on traffic.</p>
+
+        <h3 style="margin-top:28px;margin-bottom:16px;">Top Things to Do in Calatagan</h3>
+        <div class="attraction-list">
+          <div class="attraction">
+            <div class="att-num">01</div>
+            <div>
+              <h4>Little Boracay Sandbar</h4>
+              <p>The most iconic destination in Calatagan. A natural tidal sandbar with turquoise-clear shallow water and floating bamboo cottages. The defining day-trip experience in Calatagan.</p>
+              <a href="/sandbar" class="att-link">Learn more about the sandbar →</a>
+            </div>
+          </div>
+          <div class="attraction">
+            <div class="att-num">02</div>
+            <div>
+              <h4>CaSoBe — Calatagan South Beach</h4>
+              <p>A popular beach area along the southern coast of Calatagan. CaSoBe offers a range of beach resorts, accommodation options, and water activities along the South China Sea.</p>
+            </div>
+          </div>
+          <div class="attraction">
+            <div class="att-num">03</div>
+            <div>
+              <h4>Stilts Beach Resort</h4>
+              <p>One of the most well-known beach resorts in Calatagan, Stilts features over-water cottages and villas built on stilts above the sea — a popular choice for overnight stays and special occasions.</p>
+            </div>
+          </div>
+          <div class="attraction">
+            <div class="att-num">04</div>
+            <div>
+              <h4>Starfish Sandbar</h4>
+              <p>Another natural sandbar attraction near Calatagan, the Starfish Sandbar is known for the starfish visible in its shallow waters. Often combined with a Little Boracay visit as part of a day tour.</p>
+              <a href="/blog/starfish-sandbar-calatagan" class="att-link">Read our guide →</a>
+            </div>
+          </div>
+          <div class="attraction">
+            <div class="att-num">05</div>
+            <div>
+              <h4>Coastal Fishing Villages</h4>
+              <p>Calatagan's coastal barangays are home to traditional fishing communities. Visiting the jump-off areas for Little Boracay and other sandbars provides a glimpse into local coastal life in Batangas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="fact-table" style="position:sticky;top:80px;">
+          <div class="fact-table-header">Calatagan Quick Facts</div>
+          <div class="fact-row"><span>Province</span><strong>Batangas</strong></div>
+          <div class="fact-row"><span>Region</span><strong>Calabarzon (IV-A)</strong></div>
+          <div class="fact-row"><span>Island</span><strong>Luzon</strong></div>
+          <div class="fact-row"><span>Body of water</span><strong>South China Sea</strong></div>
+          <div class="fact-row"><span>From Manila</span><strong>~130–150 km · 3–4 hrs</strong></div>
+          <div class="fact-row"><span>Route</span><strong>SLEX → STAR Tollway → Lian</strong></div>
+          <div class="fact-row"><span>Known for</span><strong>Beaches, sandbars, resorts</strong></div>
+          <div class="fact-row"><span>Best season</span><strong>November – May</strong></div>
+          <div class="fact-row"><span>Top attraction</span><strong>Little Boracay Sandbar</strong></div>
+        </div>
+        <a href="/contact" class="btn btn-navy" style="width:100%;justify-content:center;margin-top:12px;">Book Little Boracay →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="cta-band">
+  <div class="container cta-band-inner">
+    <div><h2>Plan Your Calatagan Day Trip</h2><p>Book Little Boracay floating cottages and experience the best of Calatagan, Batangas.</p></div>
+    <div class="cta-actions">
+      <a href="/contact" class="btn btn-yellow btn-lg">Book Now</a>
+      <a href="/visit" class="btn btn-outline-white btn-lg">Travel Guide</a>
+    </div>
+  </div>
+</div>
+</BaseLayout>
+
+<style>
+.page-hero { padding: 60px 0 40px; background: linear-gradient(to bottom, rgba(13,43,107,.06), var(--bg)); border-bottom: 1px solid var(--border); }
+.page-hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: var(--text); margin: 10px 0 14px; letter-spacing: -.03em; }
+.page-lead { font-size: 1.05rem; color: var(--text-2); max-width: 620px; line-height: 1.7; }
+.two-col { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: start; }
+.attraction-list { display: flex; flex-direction: column; gap: 0; }
+.attraction { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+.attraction:last-child { border-bottom: none; }
+.att-num { font-size: .68rem; font-weight: 800; color: var(--text-3); letter-spacing: .1em; padding-top: 3px; flex-shrink: 0; width: 22px; }
+.attraction h4 { font-size: .97rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.attraction p { font-size: .875rem; color: var(--text-2); line-height: 1.65; margin: 0 0 6px; }
+.att-link { font-size: .82rem; font-weight: 600; color: var(--navy); text-decoration: none; }
+.att-link:hover { text-decoration: underline; }
+@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+</style>

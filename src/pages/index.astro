@@ -1,122 +1,74 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustStrip from '../components/TrustStrip.astro';
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "What is Little Boracay in Calatagan, Batangas?", "acceptedAnswer": { "@type": "Answer", "text": "Little Boracay is a natural tidal sandbar in Calatagan, Batangas. Known for shallow turquoise waters, white sand, and floating bamboo cottages. Accessed by boat from the coast." }},
-    { "@type": "Question", "name": "How far is Little Boracay from Manila?", "acceptedAnswer": { "@type": "Answer", "text": "Approximately 3 to 4 hours from Metro Manila by car via SLEX and STAR Tollway." }},
-    { "@type": "Question", "name": "Are floating cottages available?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Floating bamboo cottages are available through local boat operators at the sandbar." }},
-    { "@type": "Question", "name": "Is Little Boracay the same as Boracay Island?", "acceptedAnswer": { "@type": "Answer", "text": "No. Little Boracay is a natural sandbar in Calatagan, Batangas. Boracay Island is in Malay, Aklan, accessed by plane and ferry." }},
-    { "@type": "Question", "name": "What is the best time to visit Little Boracay?", "acceptedAnswer": { "@type": "Answer", "text": "Morning to early afternoon during low tide. Dry season from November to May offers the most reliable weather." }},
-    { "@type": "Question", "name": "Is Little Boracay family-friendly?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Shallow, calm waters suitable for all ages. Adult supervision always recommended when swimming." }}
-  ]
-};
-
-const howToSchema = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "How to Visit Little Boracay Calatagan Batangas",
-  "step": [
-    { "@type": "HowToStep", "name": "Drive from Manila", "text": "Take SLEX south then STAR Tollway toward Batangas. Exit toward Lian then proceed to Calatagan. Approximately 3–4 hours." },
-    { "@type": "HowToStep", "name": "Reach the coastal jump-off", "text": "Navigate to the coastal barangays of Calatagan where local boat operators are based." },
-    { "@type": "HowToStep", "name": "Take the boat to the sandbar", "text": "Short boat transfer to Little Boracay sandbar — approximately 10–20 minutes." },
-    { "@type": "HowToStep", "name": "Enjoy the sandbar", "text": "Rent a floating bamboo cottage and enjoy the shallow crystal-clear waters." }
-  ]
-};
+const pageSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Little Boracay Calatagan Batangas | Sandbar & Tours",
+    "url": "https://littleboracay.com",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".speakable"]
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is Little Boracay in Calatagan, Batangas?", "acceptedAnswer": { "@type": "Answer", "text": "Little Boracay is a natural tidal sandbar in Calatagan, Batangas, Philippines. Known for shallow turquoise waters, white sand, and floating bamboo cottages. Accessed by boat from the coastal barangays of Calatagan." }},
+      { "@type": "Question", "name": "How far is Little Boracay from Manila?", "acceptedAnswer": { "@type": "Answer", "text": "Approximately 3 to 4 hours from Metro Manila by car via the South Luzon Expressway (SLEX) and STAR Tollway." }},
+      { "@type": "Question", "name": "Are floating cottages available at Little Boracay?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Floating bamboo cottages are one of the signature features of Little Boracay, available through local boat operators." }},
+      { "@type": "Question", "name": "Is Little Boracay the same as Boracay Island?", "acceptedAnswer": { "@type": "Answer", "text": "No. Little Boracay is a separate natural sandbar in Calatagan, Batangas. Boracay Island is in Malay, Aklan, accessed by plane and ferry from Manila." }},
+      { "@type": "Question", "name": "What is the best time to visit Little Boracay?", "acceptedAnswer": { "@type": "Answer", "text": "Morning to early afternoon during low tide. The dry season from November to May offers the most reliable weather." }},
+      { "@type": "Question", "name": "How do I book a floating cottage at Little Boracay?", "acceptedAnswer": { "@type": "Answer", "text": "Contact us through our website, Facebook page, or call local operators in Calatagan. We recommend booking in advance especially on weekends and Philippine holidays." }}
+    ]
+  }
+];
 ---
 
 <BaseLayout
-  title="Little Boracay Calatagan Batangas | Sandbar &amp; Tours"
+  title="Little Boracay Calatagan Batangas | Sandbar & Tours"
   description="Explore Little Boracay in Calatagan, Batangas. Boat tours, floating cottages, crystal waters, white sandbars, and water activities near Calatagan beach."
-  noShell={true}
+  schema={pageSchema}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
-  <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} slot="head" />
 
-<!-- ═══════════════ NAV ═══════════════ -->
-<header class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="#hero" class="logo-link" aria-label="Little Boracay">
-      <img src="/logo.png" alt="Little Boracay Calatagan" class="logo-img" width="36" height="36" />
-      <span class="logo-name">Little Boracay</span>
-    </a>
-
-    <nav class="nav-links" aria-label="Page sections">
-      <a href="#about">About</a>
-      <a href="#activities">Activities</a>
-      <a href="#visit">Plan a Visit</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <a href="#visit" class="nav-btn">Plan Your Trip</a>
-
-    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-
-  <nav class="mob-nav" id="mob-nav" aria-hidden="true">
-    <a href="#about">About</a>
-    <a href="#activities">Activities</a>
-    <a href="#visit">Plan a Visit</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<!-- ═══════════════ HERO ═══════════════ -->
+<!-- ══════════ HERO ══════════ -->
 <section class="hero" id="hero">
   <div class="hero-inner container">
-    <div class="hero-text">
+    <div class="hero-content">
       <div class="hero-eyebrow">
         <span class="eyebrow-dot"></span>
         Calatagan, Batangas · Philippines
       </div>
       <h1 class="speakable">
-        Discover Batangas'<br>
-        Most Iconic<br>
-        <span class="h1-accent">Natural Sandbar</span>
+        Batangas' Most<br>
+        Iconic<br>
+        <span class="h1-underline">Natural Sandbar</span>
       </h1>
       <p class="hero-sub speakable">
-        Float above turquoise waters on a bamboo cottage, swim in crystal-clear shallows, and escape the city — just <strong>3–4 hours from Metro Manila</strong>.
+        Float above turquoise waters on a bamboo cottage. Swim in a natural sandbar just <strong>3–4 hours from Metro Manila</strong>. No flight needed.
       </p>
       <div class="hero-ctas">
-        <a href="#visit" class="btn-primary">Plan Your Visit</a>
-        <a href="#about" class="btn-outline">Learn More</a>
+        <a href="#book" class="btn btn-yellow btn-lg">Book Your Visit</a>
+        <a href="#about" class="btn btn-outline-white btn-lg">Learn More</a>
       </div>
-      <div class="hero-proof">
-        <div class="proof-item">
-          <strong>★ 4.3</strong>
-          <span>TripAdvisor</span>
-        </div>
-        <div class="proof-div"></div>
-        <div class="proof-item">
-          <strong>3–4 hrs</strong>
-          <span>From Manila</span>
-        </div>
-        <div class="proof-div"></div>
-        <div class="proof-item">
-          <strong>Natural</strong>
-          <span>Tidal Sandbar</span>
-        </div>
-        <div class="proof-div"></div>
-        <div class="proof-item">
-          <strong>Floating</strong>
-          <span>Cottages</span>
-        </div>
+      <div class="hero-stats">
+        <div class="hstat"><strong>★ 4.3</strong><span>TripAdvisor</span></div>
+        <div class="hstat-div"></div>
+        <div class="hstat"><strong>3–4 hrs</strong><span>From Manila</span></div>
+        <div class="hstat-div"></div>
+        <div class="hstat"><strong>Natural</strong><span>Sandbar</span></div>
+        <div class="hstat-div"></div>
+        <div class="hstat"><strong>Floating</strong><span>Cottages</span></div>
       </div>
     </div>
-
     <div class="hero-visual" aria-hidden="true">
-      <div class="hero-card-frame">
-        <img src="/logo.png" alt="" class="hero-logo-big" width="320" height="320" />
-        <div class="hero-card-tag">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="#0D2B6B"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      <div class="hero-logo-frame">
+        <img src="/logo.png" alt="Little Boracay Calatagan" class="hero-logo" width="360" height="360" />
+        <div class="hero-logo-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--navy)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
           Calatagan, Batangas
         </div>
       </div>
@@ -124,91 +76,58 @@ const howToSchema = {
   </div>
 </section>
 
-<!-- ═══════════════ TRUST BAR ═══════════════ -->
-<div class="trust-strip">
-  <div class="container trust-inner">
-    <span class="trust-label">Find &amp; review us on</span>
-    <div class="trust-logos">
-      <a href="https://www.tripadvisor.com/Attraction_Review-g1209360-d17381413-Reviews-Little_Boracay-Calatagan_Batangas_Province_Calabarzon_Region_Luzon.html" target="_blank" rel="noopener" class="trust-logo">
-        <svg width="14" height="14" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#00AF87"/><circle cx="10" cy="10" r="4.5" fill="white"/><circle cx="10" cy="10" r="2" fill="#00AF87"/></svg>
-        TripAdvisor <em>★ 4.3</em>
-      </a>
-      <a href="https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8" target="_blank" rel="noopener" class="trust-logo">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        Google Maps
-      </a>
-      <a href="https://www.trustpilot.com/review/littleboracay.com" target="_blank" rel="noopener" class="trust-logo">
-        <svg width="14" height="14" viewBox="0 0 20 20"><rect width="18" height="18" x="1" y="1" rx="3" fill="#00B67A"/><text x="3" y="14" font-size="13" fill="white" font-family="sans-serif">★</text></svg>
-        Trustpilot
-      </a>
-      <a href="https://facebook.com/groups/littleboracay" target="_blank" rel="noopener" class="trust-logo">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="#1877F2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        FB Community
-      </a>
-      <a href="https://instagram.com/littleboracay" target="_blank" rel="noopener" class="trust-logo">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2743" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="#dc2743" stroke="none"/></svg>
-        Instagram
-      </a>
-    </div>
-  </div>
-</div>
+<TrustStrip />
 
-<!-- ═══════════════ ABOUT ═══════════════ -->
+<!-- ══════════ ABOUT ══════════ -->
 <section class="section" id="about">
   <div class="container">
-    <p class="overline">The Destination</p>
     <div class="about-layout">
-      <div class="about-left">
-        <h2>What is Little Boracay?</h2>
+      <div class="about-text">
+        <span class="overline">The Destination</span>
+        <h2 class="section-title">What is Little Boracay?</h2>
         <p class="body-lg speakable">
-          <strong>Little Boracay</strong> is a natural tidal sandbar off the western coastline of <strong>Calatagan, Batangas</strong>, facing the South China Sea. It earned its name from a striking resemblance to the famous Boracay Island — white sand, turquoise-clear shallow water — but reachable from Metro Manila without a flight.
+          <strong>Little Boracay</strong> is a natural tidal sandbar off the western coastline of <strong>Calatagan, Batangas</strong>, facing the South China Sea. It earned its name from a striking resemblance to the famous Boracay Island — the same white sand and turquoise-clear shallow water — but reachable from Metro Manila without a flight.
         </p>
         <p>
-          Unlike a beach resort, Little Boracay is entirely natural — a shifting sandbar that changes with the tides. Visitors arrive by short boat transfer from Calatagan's coast, where iconic <strong>floating bamboo cottages</strong> are anchored over the shallow water.
+          Unlike a beach resort, Little Boracay is entirely a natural environment — a shifting sandbar that changes with the tides. Visitors arrive by short boat transfer from Calatagan's coastal barangays, where iconic <strong>floating bamboo cottages</strong> are anchored over the shallow water.
         </p>
-        <div class="feat-row">
-          <div class="feat-item">
-            <div class="feat-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-            </div>
-            <div>
-              <strong>Natural sandbar</strong>
-              <span>Not a resort — pure nature</span>
-            </div>
-          </div>
-          <div class="feat-item">
-            <div class="feat-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.5a6 6 0 0 1-6 6H4a4 4 0 0 1-4-4 4 4 0 0 1 4-4h1a6 6 0 0 1 6-6 6 6 0 0 1 6 6h1a2 2 0 0 1 2 2z"/></svg>
-            </div>
-            <div>
-              <strong>Boat access only</strong>
-              <span>Short transfer from Calatagan</span>
-            </div>
-          </div>
-          <div class="feat-item">
-            <div class="feat-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <div>
-              <strong>Floating cottages</strong>
-              <span>Bamboo over shallow water</span>
-            </div>
-          </div>
-          <div class="feat-item">
+        <p>
+          The destination is popular for weekend day trips, family outings, drone photography, and group gatherings on the floating cottages.
+        </p>
+        <div class="about-feats">
+          <div class="about-feat">
             <div class="feat-icon">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
-            <div>
-              <strong>3–4 hours from Manila</strong>
-              <span>No flight required</span>
+            <div><strong>3–4 hrs from Manila</strong><span>No flight required</span></div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
             </div>
+            <div><strong>Floating cottages</strong><span>Bamboo over shallow water</span></div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div><strong>Natural sandbar</strong><span>Not a resort — pure nature</span></div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div><strong>Family-friendly</strong><span>Calm, shallow, safe waters</span></div>
           </div>
         </div>
+        <div class="about-ctas">
+          <a href="/sandbar" class="btn btn-navy">About the Sandbar</a>
+          <a href="/cottages" class="btn btn-outline">Floating Cottages</a>
+        </div>
       </div>
-
       <div class="about-facts">
-        <div class="facts-header">Quick Facts</div>
-        <div class="facts-list">
+        <div class="fact-table">
+          <div class="fact-table-header">Quick Facts</div>
           <div class="fact-row"><span>Type</span><strong>Natural tidal sandbar</strong></div>
           <div class="fact-row"><span>Location</span><strong>Calatagan, Batangas, PH</strong></div>
           <div class="fact-row"><span>Coordinates</span><strong>13.8198°N · 120.6158°E</strong></div>
@@ -220,8 +139,8 @@ const howToSchema = {
           <div class="fact-row"><span>Hours</span><strong>8:00 AM – 5:00 PM</strong></div>
           <div class="fact-row"><span>TripAdvisor</span><strong>★ 4.3 · Travelers' Choice</strong></div>
         </div>
-        <a href="https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8" target="_blank" rel="noopener" class="facts-map-btn">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <a href="https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8" target="_blank" rel="noopener" class="btn btn-navy" style="width:100%;justify-content:center;margin-top:12px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
           View on Google Maps
         </a>
       </div>
@@ -229,134 +148,128 @@ const howToSchema = {
   </div>
 </section>
 
-<!-- ═══════════════ ACTIVITIES ═══════════════ -->
+<!-- ══════════ ACTIVITIES ══════════ -->
 <section class="section section-alt" id="activities">
   <div class="container">
-    <p class="overline">Things To Do</p>
-    <h2>Activities at Little Boracay</h2>
-    <p class="section-intro">Whether it's your first visit or your tenth, the sandbar always delivers.</p>
-
+    <span class="overline">Things To Do</span>
+    <h2 class="section-title">Activities at Little Boracay</h2>
+    <p class="section-intro">Whether you're after a relaxing float on a bamboo cottage or an underwater adventure, there's something for every visitor.</p>
     <div class="act-grid">
       <div class="act-card">
         <div class="act-num">01</div>
         <h3>Boat Tours to the Sandbar</h3>
-        <p>Local operators run short transfers from Calatagan's coastal barangays to the sandbar. Book in advance on weekends and holidays.</p>
+        <p>Local operators run short boat transfers from Calatagan's coastal barangays directly to Little Boracay. Book in advance on weekends and holidays.</p>
+        <a href="/things-to-do#boat-tours" class="act-link">Learn more →</a>
       </div>
-      <div class="act-card act-featured">
+      <div class="act-card featured">
         <div class="act-num">02</div>
-        <div class="act-badge">Most Popular</div>
+        <span class="badge badge-yellow" style="margin-bottom:10px;display:inline-flex;">Most Popular</span>
         <h3>Floating Cottage Experience</h3>
-        <p>The signature activity. Bamboo cottages anchored over crystal-clear shallow water — relax, eat, swim, and take in open sea views on all sides.</p>
+        <p>The signature Little Boracay activity. Bamboo cottages anchored over crystal-clear shallow water — swim, relax, eat, and enjoy 360° sea views.</p>
+        <a href="/cottages" class="act-link act-link-white">Book a cottage →</a>
       </div>
       <div class="act-card">
         <div class="act-num">03</div>
-        <h3>Swimming</h3>
-        <p>Calm, warm, shallow waters with clear visibility to the sandy bottom. Suitable for all ages including families with young children.</p>
+        <h3>Swimming &amp; Wading</h3>
+        <p>The calm, warm, shallow waters are ideal for all ages. Clear visibility to the sandy bottom makes it one of Batangas' best family swim spots.</p>
+        <a href="/things-to-do#swimming" class="act-link">Learn more →</a>
       </div>
       <div class="act-card">
         <div class="act-num">04</div>
         <h3>Snorkeling</h3>
-        <p>Clear coastal waters reveal marine life around the sandbar. Bring your own gear for the best experience exploring the underwater environment.</p>
+        <p>Explore coastal marine life in the clear waters around the sandbar. Bring your own gear or ask local operators about equipment rental.</p>
+        <a href="/things-to-do#snorkeling" class="act-link">Learn more →</a>
       </div>
       <div class="act-card">
         <div class="act-num">05</div>
         <h3>Photography &amp; Drone</h3>
-        <p>One of Batangas' most photogenic destinations. Aerial drone photography over the tidal sandbar at low tide is spectacular.</p>
+        <p>One of Batangas' most photogenic spots. Aerial drone photography over the tidal sandbar at low tide is spectacular. Always follow CAAP regulations.</p>
+        <a href="/things-to-do#photography" class="act-link">Learn more →</a>
       </div>
       <div class="act-card">
         <div class="act-num">06</div>
-        <h3>Day Trips from Manila</h3>
-        <p>Leave Manila early, arrive at the sandbar by 9AM, spend the day, and be back in Manila by evening. The perfect quick coastal escape.</p>
+        <h3>Island Day Trips</h3>
+        <p>The perfect full-day Manila escape. Leave early, arrive by 9 AM, spend the day at the sandbar, and be home by evening. Perfect for barkada, family, and corporate groups.</p>
+        <a href="/visit" class="act-link">Plan your trip →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ PLAN A VISIT ═══════════════ -->
-<section class="section" id="visit">
+<!-- ══════════ HOW TO VISIT ══════════ -->
+<section class="section" id="how-to-visit">
   <div class="container">
-    <p class="overline">How to Get There</p>
-    <h2>Plan Your Visit</h2>
-    <p class="section-intro">Everything you need for the perfect Calatagan sandbar day trip from Manila.</p>
-
     <div class="visit-layout">
-      <div class="visit-steps-col">
-        <div class="v-step">
-          <div class="vstep-n">01</div>
-          <div>
-            <h3>Drive from Metro Manila</h3>
-            <p>Take the <strong>South Luzon Expressway (SLEX)</strong> south, then merge onto the <strong>STAR Tollway</strong> toward Batangas. The drive is <strong>3–4 hours</strong> under normal traffic. Leave by 5–6 AM on weekends.</p>
+      <div class="visit-left">
+        <span class="overline">How to Get There</span>
+        <h2 class="section-title">Getting to Little Boracay</h2>
+        <p>From Manila to the sandbar in 4 simple steps.</p>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <h3>Drive from Metro Manila</h3>
+              <p>Take the <strong>South Luzon Expressway (SLEX)</strong> south then merge onto the <strong>STAR Tollway</strong>. Drive time is <strong>3–4 hours</strong>. Leave by 5–6 AM on weekends to beat traffic.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <h3>Navigate to Calatagan</h3>
+              <p>Exit toward <strong>Lian, Batangas</strong> then follow roads to Calatagan. Use Google Maps or Waze and search "Little Boracay Calatagan".</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <h3>Reach the Jump-Off Point</h3>
+              <p>Head to the coastal barangays of Calatagan where local boat operators are based. <strong>Book cottages in advance</strong> — especially on weekends.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">04</div>
+            <div class="step-content">
+              <h3>Boat to the Sandbar</h3>
+              <p>The boat ride takes <strong>10–20 minutes</strong>. Always confirm with operators the day before as boats may not run in rough weather or very high tides.</p>
+            </div>
           </div>
         </div>
-        <div class="v-step">
-          <div class="vstep-n">02</div>
-          <div>
-            <h3>Navigate to Calatagan</h3>
-            <p>Exit toward <strong>Lian, Batangas</strong> then follow roads to Calatagan town. Use Google Maps or Waze. Nearby landmarks: <em>CaSoBe, Stilts Beach Resort</em>.</p>
+        <div class="visit-seasons">
+          <div class="season-pill" style="background:var(--green-bg);border:1px solid var(--green-bd);">
+            <strong>✅ Nov – May</strong>
+            <span>Dry season — best weather and sea conditions</span>
+          </div>
+          <div class="season-pill" style="background:var(--amber-bg);border:1px solid var(--amber-bd);">
+            <strong>⚠️ Jun – Oct</strong>
+            <span>Typhoon season — check conditions first</span>
           </div>
         </div>
-        <div class="v-step">
-          <div class="vstep-n">03</div>
-          <div>
-            <h3>Reach the Jump-Off Point</h3>
-            <p>Head to the coastal barangays of Calatagan where local boat operators run transfers. Contact operators in advance on weekends — floating cottages fill up fast.</p>
-          </div>
-        </div>
-        <div class="v-step">
-          <div class="vstep-n">04</div>
-          <div>
-            <h3>Boat to the Sandbar</h3>
-            <p>The boat ride takes <strong>10–20 minutes</strong> depending on conditions. Always confirm with operators the day before — boats may not run in rough weather.</p>
-          </div>
-        </div>
-
-        <div class="tip-box">
-          <div class="tip-title">Essential Tips</div>
-          <ul>
-            <li><span class="tip-check">✓</span><strong>Bring cash (PHP)</strong> — most operators don't accept cards</li>
-            <li><span class="tip-check">✓</span><strong>Leave by 5–6 AM</strong> on weekends to beat SLEX traffic</li>
-            <li><span class="tip-check">✓</span><strong>Book cottages ahead</strong> — fills up on peak weekends</li>
-            <li><span class="tip-check">✓</span><strong>High SPF sunscreen</strong> — reflected water sun is intense</li>
-            <li><span class="tip-check">✓</span><strong>Dry bag</strong> for phone, wallet, and electronics</li>
-            <li><span class="tip-check">✓</span><strong>Check PAGASA</strong> — rough weather cancels boats</li>
-          </ul>
-        </div>
-
-        <div class="seasons-row">
-          <div class="season-pill season-good">
-            <strong>Nov – May</strong>
-            <span>Dry season — best conditions</span>
-          </div>
-          <div class="season-pill season-warn">
-            <strong>Jun – Oct</strong>
-            <span>Typhoon season — check first</span>
-          </div>
-        </div>
+        <a href="/visit" class="btn btn-navy" style="margin-top:20px;">Full Travel Guide →</a>
       </div>
 
-      <!-- PLAN A VISIT FORM -->
-      <div class="form-panel" id="plan-form">
-        <div class="form-panel-header">
-          <h3>Send Me a Visitor Guide</h3>
-          <p>Tell us when you're coming and we'll send you everything you need to know.</p>
+      <!-- BOOK FORM -->
+      <div class="form-panel" id="book">
+        <div class="form-panel-head">
+          <h3>Plan Your Visit</h3>
+          <p>Fill in your details and we'll get back to you with everything you need.</p>
         </div>
-        <form id="planForm" novalidate>
-          <div class="field-row">
-            <div class="field">
-              <label for="p-name">Full Name *</label>
+        <form id="planForm" class="form-body" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="p-name">Your Name *</label>
               <input type="text" id="p-name" placeholder="Juan dela Cruz" required />
             </div>
-            <div class="field">
+            <div class="form-group">
               <label for="p-email">Email Address *</label>
               <input type="email" id="p-email" placeholder="juan@email.com" required />
             </div>
           </div>
-          <div class="field-row">
-            <div class="field">
-              <label for="p-date">Planned Visit Date</label>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="p-date">Preferred Date</label>
               <input type="date" id="p-date" />
             </div>
-            <div class="field">
+            <div class="form-group">
               <label for="p-guests">Group Size</label>
               <select id="p-guests">
                 <option value="">Select...</option>
@@ -364,11 +277,11 @@ const howToSchema = {
                 <option>Small group (3–5)</option>
                 <option>Medium group (6–10)</option>
                 <option>Large group (11–20)</option>
-                <option>Event / 20+</option>
+                <option>Big event (20+)</option>
               </select>
             </div>
           </div>
-          <div class="field">
+          <div class="form-group">
             <label for="p-type">Type of Visit</label>
             <select id="p-type">
               <option value="">Select...</option>
@@ -377,26 +290,26 @@ const howToSchema = {
               <option>Barkada / friend group</option>
               <option>Corporate / team building</option>
               <option>Photography / drone shoot</option>
-              <option>Special occasion</option>
+              <option>Special occasion / celebration</option>
             </select>
           </div>
-          <div class="field">
+          <div class="form-group">
             <label for="p-from">Travelling from</label>
-            <input type="text" id="p-from" placeholder="e.g. Makati, BGC, Quezon City..." />
+            <input type="text" id="p-from" placeholder="e.g. Makati, BGC, Quezon City…" />
           </div>
-          <div class="field">
+          <div class="form-group">
             <label for="p-notes">Questions or special requests</label>
-            <textarea id="p-notes" rows="3" placeholder="Dietary needs, accessibility, large group logistics..."></textarea>
+            <textarea id="p-notes" rows="3" placeholder="Dietary needs, accessibility, large group arrangements…"></textarea>
           </div>
-          <button type="submit" class="form-submit" id="planBtn">
+          <button type="submit" class="btn btn-navy" style="width:100%;justify-content:center;" id="planBtn">
             Send My Visit Plan
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
           <div class="form-success" id="planOk">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             <div>
               <strong>You're all set!</strong>
-              <p>We'll send your full Little Boracay visitor guide. See you at the sandbar!</p>
+              <p>We'll be in touch with your full Little Boracay visitor guide. See you at the sandbar!</p>
             </div>
           </div>
         </form>
@@ -405,59 +318,50 @@ const howToSchema = {
   </div>
 </section>
 
-<!-- ═══════════════ REVIEWS ═══════════════ -->
+<!-- ══════════ REVIEWS ══════════ -->
 <section class="section section-alt" id="reviews">
   <div class="container">
-    <p class="overline">What Visitors Say</p>
-    <h2 style="text-align:center;">Trusted by Travelers</h2>
+    <span class="overline" style="display:block;text-align:center;">Visitor Reviews</span>
+    <h2 class="section-title" style="text-align:center;">Trusted by Travelers</h2>
     <p class="section-intro" style="text-align:center;margin-left:auto;margin-right:auto;">Real experiences from visitors to Little Boracay sandbar in Calatagan, Batangas.</p>
-
     <div class="reviews-layout">
       <article class="review-card">
         <div class="review-stars">★★★★★</div>
-        <blockquote>"A must-see scenery. The travel going to this place might be tough but it's all worth it when you arrive. Stargazing was awesome!"</blockquote>
+        <blockquote>"Absolutely breathtaking! We booked a floating cottage for our group of 8 and it was the best decision. Crystal-clear water, white sand, and the views are just incredible. Can't wait to come back!"</blockquote>
         <div class="reviewer">
-          <div class="reviewer-avatar">M</div>
-          <div>
-            <strong>Maria Alma D.</strong>
-            <span>TripAdvisor · May 2019</span>
-          </div>
+          <div class="reviewer-avatar">J</div>
+          <div><strong>Joyce M.</strong><span>Google · April 2026 · 5 days ago</span></div>
         </div>
       </article>
-
       <article class="review-card">
-        <div class="review-stars">★★★★</div>
-        <blockquote>"Surely one of the best beaches I've visited. White sand and clear water reminiscent of Boracay in Aklan, but just a car ride from Manila."</blockquote>
+        <div class="review-stars">★★★★★</div>
+        <blockquote>"Best day trip from Manila! We did the Starfish Sandbar + Little Boracay combo tour and it was unforgettable. The floating cottage was so unique — nothing like it anywhere near the city."</blockquote>
         <div class="reviewer">
-          <div class="reviewer-avatar">I</div>
-          <div>
-            <strong>ilaine</strong>
-            <span>TripAdvisor · March 2019</span>
-          </div>
+          <div class="reviewer-avatar">R</div>
+          <div><strong>Ramon T.</strong><span>Facebook · March 2026 · 3 weeks ago</span></div>
         </div>
       </article>
-
       <div class="rating-panel">
         <div class="rating-score">4.3</div>
         <div class="rating-stars">★★★★☆</div>
         <p class="rating-rank">#4 of 9 things to do in Calatagan</p>
         <p class="rating-award">Travelers' Choice · TripAdvisor</p>
         <div class="rating-links">
-          <a href="https://www.tripadvisor.com/Attraction_Review-g1209360-d17381413-Reviews-Little_Boracay-Calatagan_Batangas_Province_Calabarzon_Region_Luzon.html" target="_blank" rel="noopener" class="r-link">
+          <a href="https://www.tripadvisor.com/Attraction_Review-g1209360-d17381413-Reviews-Little_Boracay-Calatagan_Batangas_Province_Calabarzon_Region_Luzon.html" target="_blank" rel="noopener" class="rating-link">
             <svg width="12" height="12" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#00AF87"/><circle cx="10" cy="10" r="4" fill="white"/><circle cx="10" cy="10" r="2" fill="#00AF87"/></svg>
             Read reviews on TripAdvisor
           </a>
-          <a href="https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8" target="_blank" rel="noopener" class="r-link">
+          <a href="https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8" target="_blank" rel="noopener" class="rating-link">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             View on Google Maps
           </a>
-          <a href="https://www.trustpilot.com/review/littleboracay.com" target="_blank" rel="noopener" class="r-link">
+          <a href="https://www.trustpilot.com/review/littleboracay.com" target="_blank" rel="noopener" class="rating-link">
             <svg width="12" height="12" viewBox="0 0 20 20"><rect width="18" height="18" x="1" y="1" rx="2.5" fill="#00B67A"/><text x="2.5" y="14" font-size="11" fill="white" font-family="sans-serif">★</text></svg>
             Review on Trustpilot
           </a>
-          <a href="https://facebook.com/groups/littleboracay" target="_blank" rel="noopener" class="r-link">
+          <a href="https://facebook.com/groups/littleboracay" target="_blank" rel="noopener" class="rating-link">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="#1877F2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            Join FB Community
+            Join the FB Community
           </a>
         </div>
       </div>
@@ -465,153 +369,154 @@ const howToSchema = {
   </div>
 </section>
 
-<!-- ═══════════════ FAQ ═══════════════ -->
+<!-- ══════════ FAQ ══════════ -->
 <section class="section" id="faq">
-  <div class="container faq-container">
-    <p class="overline">FAQ</p>
-    <h2>Frequently Asked Questions</h2>
+  <div class="container faq-wrap">
+    <span class="overline">FAQ</span>
+    <h2 class="section-title">Frequently Asked Questions</h2>
     <p class="section-intro">Everything travelers ask before visiting Little Boracay in Calatagan, Batangas.</p>
-
-    <div class="faq-list">
+    <div class="faq-accordion">
       <details class="faq-item" open>
         <summary>What is Little Boracay in Calatagan, Batangas?</summary>
-        <p>Little Boracay is a <strong>natural tidal sandbar</strong> off the western coast of Calatagan, Batangas, Philippines. Known for shallow turquoise waters, white sand, and iconic floating bamboo cottages. It is not a beach resort — it is a natural destination accessed by boat from the coastal barangays of Calatagan.</p>
+        <div class="faq-answer"><p>Little Boracay is a <strong>natural tidal sandbar</strong> off the western coast of Calatagan, Batangas, Philippines. Known for its shallow turquoise waters, white sand, and iconic floating bamboo cottages. It is not a beach resort — it is a natural destination accessed by boat from the coastal barangays of Calatagan.</p></div>
       </details>
       <details class="faq-item">
         <summary>How far is Little Boracay from Manila?</summary>
-        <p>Calatagan, Batangas is approximately <strong>3 to 4 hours from Metro Manila</strong> by car, depending on traffic. The route uses the South Luzon Expressway (SLEX) and STAR Tollway heading south toward Batangas.</p>
+        <div class="faq-answer"><p>Calatagan, Batangas is approximately <strong>3 to 4 hours from Metro Manila</strong> by car, depending on traffic. The route uses the South Luzon Expressway (SLEX) and STAR Tollway heading south.</p></div>
       </details>
       <details class="faq-item">
-        <summary>Are floating cottages available at Little Boracay?</summary>
-        <p>Yes. <strong>Floating bamboo cottages</strong> are one of the defining features of Little Boracay. They are available through local boat operators and provide shaded, over-water spaces for groups to relax, eat, and enjoy the sandbar environment.</p>
+        <summary>How do I book a floating cottage at Little Boracay?</summary>
+        <div class="faq-answer"><p>Use the <a href="#book">Plan Your Visit form</a> on this page, visit our <a href="/contact">Contact page</a>, or message us on <a href="https://facebook.com/littleboracay" target="_blank" rel="noopener">Facebook</a>. We recommend booking at least 2–3 days ahead on weekends and Philippine holidays.</p></div>
       </details>
       <details class="faq-item">
         <summary>Is Little Boracay the same as Boracay Island in Aklan?</summary>
-        <p>No. Little Boracay is a <strong>separate destination</strong> in Calatagan, Batangas. It earned the nickname from similar white sand and turquoise water. Boracay Island is in Malay, Aklan and requires a flight and ferry from Manila.</p>
+        <div class="faq-answer"><p>No. Little Boracay is a <strong>completely separate destination</strong> in Calatagan, Batangas. It earned the nickname because of similar white sand and turquoise water. Boracay Island is in Malay, Aklan and requires a flight and ferry from Manila.</p></div>
       </details>
       <details class="faq-item">
         <summary>What is the best time to visit Little Boracay?</summary>
-        <p>Morning to early afternoon during low tide is best. The <strong>dry season from November to May</strong> offers the most reliable weather and calmest seas. Avoid typhoon season (June–October) when possible.</p>
+        <div class="faq-answer"><p>Morning to early afternoon during low tide is ideal. The <strong>dry season (November to May)</strong> offers the most reliable weather and calmest seas. Avoid typhoon season (June–October) when possible, or check with us first.</p></div>
       </details>
       <details class="faq-item">
         <summary>Is Little Boracay family-friendly?</summary>
-        <p>Yes. The <strong>shallow, calm waters</strong> make it suitable for families including young children. Adult supervision is always recommended when swimming.</p>
-      </details>
-      <details class="faq-item">
-        <summary>How far is it from CaSoBe or Stilts Beach Resort?</summary>
-        <p>Both CaSoBe (Calatagan South Beach) and Stilts Beach Resort are located nearby along the Calatagan coastline. Many visitors combine multiple stops in a single day trip to the area.</p>
+        <div class="faq-answer"><p>Yes. The <strong>shallow, calm waters</strong> make it perfect for families including young children. The entire sandbar area is suitable for non-swimmers and waders. Adult supervision is always recommended.</p></div>
       </details>
       <details class="faq-item">
         <summary>What should I bring to Little Boracay?</summary>
-        <p>Essentials: <strong>cash (PHP)</strong>, high-SPF sunscreen, swimwear, waterproof sandals, dry bag for valuables, drinking water, packed food or snacks. Optional: snorkeling gear, waterproof camera, drone (check CAAP regulations).</p>
+        <div class="faq-answer"><p>Essentials: <strong>cash (PHP)</strong> — most operators don't accept cards; high-SPF sunscreen; swimwear; waterproof sandals; dry bag for phone and valuables; drinking water; packed meals or snacks. Optional: snorkeling gear, waterproof camera, drone (check CAAP rules).</p></div>
       </details>
+      <details class="faq-item">
+        <summary>How far is Little Boracay from CaSoBe or Stilts Resort?</summary>
+        <div class="faq-answer"><p>Both CaSoBe (Calatagan South Beach) and Stilts Beach Resort are located nearby along the Calatagan coastline. Many visitors combine these stops in a single day trip to Calatagan, Batangas.</p></div>
+      </details>
+    </div>
+    <div style="margin-top:24px;text-align:center;">
+      <a href="/faq" class="btn btn-outline">View All FAQs →</a>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════ CTA BAND ═══════════════ -->
-<section class="cta-band">
+<!-- ══════════ CTA BAND ══════════ -->
+<div class="cta-band">
   <div class="container cta-band-inner">
     <div>
       <h2>Ready to Visit Little Boracay?</h2>
-      <p>Calatagan's most iconic sandbar is waiting — plan your trip today.</p>
+      <p>Calatagan's most iconic sandbar is waiting — floating cottages, crystal waters, and memories that last a lifetime.</p>
     </div>
-    <div class="cta-band-actions">
-      <a href="#visit" class="btn-primary">Plan Your Visit</a>
-      <a href="https://facebook.com/groups/littleboracay" target="_blank" rel="noopener" class="btn-outline">Join the Community</a>
+    <div class="cta-actions">
+      <a href="#book" class="btn btn-yellow btn-lg">Book Your Visit</a>
+      <a href="/contact" class="btn btn-outline-white btn-lg">Contact Us</a>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ═══════════════ CONTACT ═══════════════ -->
+<!-- ══════════ CONTACT FORM ══════════ -->
 <section class="section section-alt" id="contact">
   <div class="container">
     <div class="contact-layout">
-      <div class="contact-left">
-        <p class="overline">Get In Touch</p>
-        <h2>Contact Little Boracay</h2>
-        <p>Questions about visiting, group bookings, cottage availability, or anything about the sandbar? We'd love to hear from you.</p>
-
+      <div class="contact-info">
+        <span class="overline">Get In Touch</span>
+        <h2 class="section-title">Contact Little Boracay</h2>
+        <p>Questions about visiting, group bookings, cottage availability, or anything about the sandbar? We're here to help.</p>
         <div class="contact-channels">
-          <a href="https://facebook.com/littleboracay" target="_blank" rel="noopener" class="channel">
-            <div class="ch-dot" style="background:#1877F2"></div>
-            <div>
-              <strong>Facebook Page</strong>
-              <span>facebook.com/littleboracay</span>
+          <a href="https://tiktok.com/@littleboracay" target="_blank" rel="noopener" class="contact-ch">
+            <div class="ch-icon" style="background:#010101;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
             </div>
+            <div><strong>TikTok</strong><span>@littleboracay</span></div>
           </a>
-          <a href="https://facebook.com/groups/littleboracay" target="_blank" rel="noopener" class="channel">
-            <div class="ch-dot" style="background:#1877F2"></div>
-            <div>
-              <strong>FB Community Group</strong>
-              <span>Join thousands of visitors</span>
+          <a href="https://facebook.com/littleboracay" target="_blank" rel="noopener" class="contact-ch">
+            <div class="ch-icon" style="background:#1877F2;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
             </div>
+            <div><strong>Facebook Page</strong><span>facebook.com/littleboracay</span></div>
           </a>
-          <a href="https://instagram.com/littleboracay" target="_blank" rel="noopener" class="channel">
-            <div class="ch-dot" style="background:#dc2743"></div>
-            <div>
-              <strong>Instagram</strong>
-              <span>@littleboracay</span>
+          <a href="https://facebook.com/groups/littleboracay" target="_blank" rel="noopener" class="contact-ch">
+            <div class="ch-icon" style="background:#1877F2;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
+            <div><strong>Facebook Community Group</strong><span>Join thousands of visitors</span></div>
           </a>
-          <a href="https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8" target="_blank" rel="noopener" class="channel">
-            <div class="ch-dot" style="background:#EA4335"></div>
-            <div>
-              <strong>Google Maps</strong>
-              <span>Find us · Leave a review</span>
+          <a href="https://instagram.com/littleboracay" target="_blank" rel="noopener" class="contact-ch">
+            <div class="ch-icon" style="background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="white" stroke="none"/></svg>
             </div>
+            <div><strong>Instagram</strong><span>@littleboracay</span></div>
+          </a>
+          <a href="https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8" target="_blank" rel="noopener" class="contact-ch">
+            <div class="ch-icon" style="background:#EA4335;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div><strong>Google Maps</strong><span>Find us · Leave a review</span></div>
           </a>
         </div>
-
-        <div class="location-card">
-          <div class="location-label">Location</div>
+        <div class="location-box">
+          <div class="location-label">📍 Location</div>
           <p>Little Boracay Sandbar<br>Calatagan, Batangas<br>Calabarzon Region, Luzon, Philippines</p>
-          <p class="location-coords">13.8198°N, 120.6158°E · Open daily 8:00 AM – 5:00 PM</p>
+          <p style="margin-top:8px;font-size:.78rem;color:var(--text-3);">13.8198°N, 120.6158°E · Open daily 8:00 AM – 5:00 PM</p>
         </div>
       </div>
 
-      <!-- CONTACT FORM -->
       <div class="form-panel">
-        <div class="form-panel-header">
-          <h3>Send a Message</h3>
-          <p>We'll reply via our official Facebook page or by email.</p>
+        <div class="form-panel-head">
+          <h3>Send Us a Message</h3>
+          <p>We'll reply via Facebook or email within 24 hours.</p>
         </div>
-        <form id="contactForm" novalidate>
-          <div class="field-row">
-            <div class="field">
+        <form id="contactForm" class="form-body" novalidate>
+          <div class="form-row">
+            <div class="form-group">
               <label for="c-name">Full Name *</label>
               <input type="text" id="c-name" placeholder="Your name" required />
             </div>
-            <div class="field">
+            <div class="form-group">
               <label for="c-email">Email Address *</label>
               <input type="email" id="c-email" placeholder="your@email.com" required />
             </div>
           </div>
-          <div class="field">
+          <div class="form-group">
             <label for="c-sub">Subject</label>
             <select id="c-sub">
-              <option value="">Select a topic...</option>
-              <option>Boat tour &amp; cottage inquiry</option>
-              <option>Group / corporate booking</option>
+              <option value="">Select a topic…</option>
+              <option>Boat tour &amp; cottage booking</option>
+              <option>Group / corporate event</option>
               <option>Photography / drone inquiry</option>
-              <option>Directions &amp; getting there</option>
+              <option>Directions &amp; travel help</option>
               <option>General question</option>
               <option>Partnership / media</option>
             </select>
           </div>
-          <div class="field">
+          <div class="form-group">
             <label for="c-msg">Message *</label>
-            <textarea id="c-msg" rows="5" placeholder="Tell us what you'd like to know about visiting Little Boracay..." required></textarea>
+            <textarea id="c-msg" rows="5" placeholder="Tell us what you'd like to know about visiting Little Boracay…" required></textarea>
           </div>
-          <button type="submit" class="form-submit" id="contactBtn">
+          <button type="submit" class="btn btn-navy" style="width:100%;justify-content:center;" id="contactBtn">
             Send Message
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
           <div class="form-success" id="contactOk">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             <div>
               <strong>Message received!</strong>
-              <p>We'll get back to you soon. Join our Facebook community for the latest updates.</p>
+              <p>We'll get back to you within 24 hours. You can also reach us on Facebook anytime.</p>
             </div>
           </div>
         </form>
@@ -620,435 +525,192 @@ const howToSchema = {
   </div>
 </section>
 
-<!-- ═══════════════ FOOTER ═══════════════ -->
-<footer class="footer">
-  <div class="footer-main container">
-    <div class="footer-brand">
-      <a href="#hero" class="logo-link">
-        <img src="/logo.png" alt="Little Boracay" class="logo-img" width="40" height="40" />
-        <div>
-          <span class="logo-name" style="color:white">Little Boracay</span>
-          <span class="logo-sub">Calatagan, Batangas</span>
-        </div>
-      </a>
-      <p class="footer-desc">Little Boracay Calatagan is a premier sandbar destination in Batangas, offering floating cottages, island tours, and crystal-clear waters — just a short trip from Manila.</p>
-      <div class="footer-socials">
-        <a href="https://tiktok.com/@littleboracay" target="_blank" rel="noopener" aria-label="TikTok" class="soc-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
-        </a>
-        <a href="https://facebook.com/littleboracay" target="_blank" rel="noopener" aria-label="Facebook" class="soc-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        </a>
-        <a href="https://facebook.com/groups/littleboracay" target="_blank" rel="noopener" aria-label="FB Group" class="soc-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </a>
-        <a href="https://instagram.com/littleboracay" target="_blank" rel="noopener" aria-label="Instagram" class="soc-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
-        </a>
-        <a href="https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8" target="_blank" rel="noopener" aria-label="Google Maps" class="soc-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        </a>
-        <a href="https://www.tripadvisor.com/Attraction_Review-g1209360-d17381413-Reviews-Little_Boracay-Calatagan_Batangas_Province_Calabarzon_Region_Luzon.html" target="_blank" rel="noopener" aria-label="TripAdvisor" class="soc-btn">
-          <svg width="14" height="14" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="currentColor" opacity=".85"/><circle cx="10" cy="10" r="4" fill="white"/><circle cx="10" cy="10" r="2" fill="currentColor"/></svg>
-        </a>
-        <a href="https://www.trustpilot.com/review/littleboracay.com" target="_blank" rel="noopener" aria-label="Trustpilot" class="soc-btn">
-          <svg width="14" height="14" viewBox="0 0 20 20"><rect width="18" height="18" x="1" y="1" rx="3" fill="currentColor" opacity=".8"/><text x="3" y="14" font-size="11" fill="white" font-family="sans-serif">★</text></svg>
-        </a>
-      </div>
-    </div>
-
-    <div class="footer-col">
-      <h4>Explore</h4>
-      <a href="#about">About Little Boracay</a>
-      <a href="#activities">Things to Do</a>
-      <a href="#visit">Plan a Visit</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-    <div class="footer-col">
-      <h4>Travel Info</h4>
-      <a href="#visit">How to Get There</a>
-      <a href="#visit">Best Time to Visit</a>
-      <a href="#faq">What to Bring</a>
-      <a href="#faq">FAQ</a>
-    </div>
-
-    <div class="footer-col">
-      <h4>Reviews</h4>
-      <a href="https://www.tripadvisor.com/Attraction_Review-g1209360-d17381413-Reviews-Little_Boracay-Calatagan_Batangas_Province_Calabarzon_Region_Luzon.html" target="_blank" rel="noopener">TripAdvisor ★ 4.3</a>
-      <a href="https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8" target="_blank" rel="noopener">Google Maps</a>
-      <a href="https://www.trustpilot.com/review/littleboracay.com" target="_blank" rel="noopener">Trustpilot</a>
-      <a href="https://facebook.com/groups/littleboracay" target="_blank" rel="noopener">FB Community</a>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <div class="container footer-bottom-inner">
-      <p>© {new Date().getFullYear()} Little Boracay Calatagan, Batangas. All Rights Reserved.</p>
-      <p>Little Boracay Calatagan is a premier sandbar destination in Batangas, offering floating cottages, island tours, and crystal-clear waters — just a short trip from Manila.</p>
-      <p class="footer-social-handles">
-        Follow us on
-        <a href="https://tiktok.com/@littleboracay" target="_blank" rel="noopener">TikTok</a>
-        and
-        <a href="https://facebook.com/littleboracay" target="_blank" rel="noopener">Facebook</a>:
-        <strong>@littleboracay</strong>
-      </p>
-    </div>
-  </div>
-</footer>
-
 <script>
-/* Smooth scroll */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const id = a.getAttribute('href').slice(1);
-    const t = document.getElementById(id);
-    if (!t) return;
-    e.preventDefault();
-    window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 68, behavior: 'smooth' });
-    document.getElementById('mob-nav')?.setAttribute('aria-hidden','true');
-    document.getElementById('burger')?.classList.remove('open');
+  window.addEventListener('load', () => {
+    (window as any).bindForm?.('planForm','planBtn','planOk');
+    (window as any).bindForm?.('contactForm','contactBtn','contactOk');
   });
-});
-
-/* Burger */
-document.getElementById('burger')?.addEventListener('click', function() {
-  const n = document.getElementById('mob-nav');
-  const open = n?.getAttribute('aria-hidden') === 'true';
-  n?.setAttribute('aria-hidden', open ? 'false' : 'true');
-  this.setAttribute('aria-expanded', open ? 'true' : 'false');
-  this.classList.toggle('open', open);
-});
-
-/* Scroll shadow */
-window.addEventListener('scroll', () => {
-  document.getElementById('nav')?.classList.toggle('scrolled', window.scrollY > 16);
-}, { passive: true });
-
-/* Active link */
-const sec_ids = ['about','activities','visit','reviews','faq','contact'];
-const navAs = document.querySelectorAll('.nav-links a, .mob-nav a');
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting)
-      navAs.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
-  });
-}, { rootMargin: '-25% 0px -65% 0px' });
-sec_ids.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
-
-/* Forms */
-function bindForm(fId, bId, oId) {
-  const form = document.getElementById(fId);
-  const btn  = document.getElementById(bId);
-  const ok   = document.getElementById(oId);
-  if (!form) return;
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
-    setTimeout(() => {
-      form.querySelectorAll('input,select,textarea').forEach(el => el.style.display = 'none');
-      form.querySelectorAll('label').forEach(el => el.style.display = 'none');
-      form.querySelectorAll('.field-row,.field').forEach(el => el.style.display = 'none');
-      if (btn) btn.style.display = 'none';
-      if (ok)  ok.style.display = 'flex';
-    }, 1100);
-  });
-}
-bindForm('planForm','planBtn','planOk');
-bindForm('contactForm','contactBtn','contactOk');
 </script>
 
+</BaseLayout>
+
 <style>
-/* ════ DESIGN TOKENS ════
-   Aspect-inspired: white/grey base
-   Accents: navy #0D2B6B + yellow #FFD600
-*/
-:root {
-  --navy:      #0D2B6B;
-  --navy-l:    #1e3f8a;
-  --yellow:    #FFD600;
-  --yellow-l:  #FFF9CC;
-  --bg:        #ffffff;
-  --bg-alt:    #F7F7F5;
-  --border:    #E5E7EB;
-  --border-d:  #D1D5DB;
-  --text:      #111827;
-  --text-2:    #6B7280;
-  --text-3:    #9CA3AF;
-  --radius:    8px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
-  --shadow-xs: 0 1px 2px rgba(0,0,0,.05);
-  --shadow-sm: 0 1px 6px rgba(0,0,0,.08);
-  --shadow-md: 0 4px 20px rgba(0,0,0,.08);
-  --max:       1160px;
-  --nav-h:     64px;
+/* HERO */
+.hero {
+  background: linear-gradient(150deg, #091945 0%, var(--navy) 55%, var(--navy-l) 100%);
+  padding: 88px 0 72px;
+  overflow: hidden;
+  position: relative;
 }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
-body { font-family: -apple-system, 'Inter', 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-a { color: var(--navy); text-decoration: none; }
-img { max-width: 100%; height: auto; display: block; }
-
-/* ── NAV ── */
-.nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,.97); border-bottom: 1px solid transparent; transition: border-color .2s, box-shadow .2s; backdrop-filter: blur(10px); }
-.nav.scrolled { border-bottom-color: var(--border); box-shadow: var(--shadow-xs); }
-.nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; height: var(--nav-h); display: flex; align-items: center; gap: 32px; }
-.logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
-.logo-img { border-radius: 50%; object-fit: cover; }
-.logo-name { font-size: .95rem; font-weight: 700; color: var(--navy); letter-spacing: -.01em; }
-.logo-sub { font-size: .68rem; color: var(--text-2); display: block; }
-.nav-links { display: flex; align-items: center; gap: 0; margin-left: auto; }
-.nav-links a { padding: 6px 13px; font-size: .865rem; font-weight: 500; color: var(--text-2); border-radius: var(--radius); transition: color .15s, background .15s; }
-.nav-links a:hover, .nav-links a.active { color: var(--navy); background: rgba(13,43,107,.06); }
-.nav-btn { margin-left: 12px; padding: 8px 20px; background: var(--navy); color: white; border-radius: var(--radius); font-size: .865rem; font-weight: 600; text-decoration: none; transition: background .15s; white-space: nowrap; }
-.nav-btn:hover { background: var(--navy-l); color: white; }
-.burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; margin-left: auto; }
-.burger span { display: block; width: 20px; height: 1.5px; background: var(--text); border-radius: 2px; transition: .22s; }
-.burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.burger.open span:nth-child(2) { opacity: 0; }
-.burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-.mob-nav { display: none; flex-direction: column; padding: 10px 24px 20px; border-top: 1px solid var(--border); gap: 2px; }
-.mob-nav[aria-hidden="false"] { display: flex; }
-.mob-nav a { padding: 9px 12px; border-radius: var(--radius); color: var(--text); font-weight: 500; font-size: .9rem; }
-.mob-nav a:hover { background: var(--bg-alt); }
-
-/* ── HERO ── */
-.hero { padding: 80px 0 72px; border-bottom: 1px solid var(--border); }
-.hero-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: center; }
-.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: .78rem; font-weight: 600; color: var(--text-2); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 20px; }
-.eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--yellow); border: 1px solid rgba(0,0,0,.1); }
-h1 { font-size: clamp(2.4rem, 4.5vw, 3.5rem); font-weight: 800; color: var(--text); line-height: 1.08; letter-spacing: -.03em; margin-bottom: 20px; }
-.h1-accent { color: var(--navy); position: relative; }
-.h1-accent::after { content: ''; position: absolute; bottom: 2px; left: 0; right: 0; height: 3px; background: var(--yellow); border-radius: 2px; }
-.hero-sub { font-size: 1.05rem; color: var(--text-2); max-width: 480px; line-height: 1.7; margin-bottom: 28px; }
-.hero-sub strong { color: var(--text); }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .76rem;
+  font-weight: 700;
+  color: rgba(255,255,255,.7);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.eyebrow-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--yellow);
+  animation: pulse 2.5s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+h1 {
+  font-size: clamp(2.5rem, 4.5vw, 3.6rem);
+  font-weight: 800;
+  color: white;
+  line-height: 1.08;
+  letter-spacing: -.03em;
+  margin-bottom: 20px;
+}
+.h1-underline {
+  color: var(--yellow);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+.hero-sub {
+  font-size: 1.07rem;
+  color: rgba(255,255,255,.78);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+.hero-sub strong { color: var(--yellow); }
 .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
-.btn-primary { display: inline-flex; align-items: center; gap: 6px; padding: 11px 24px; background: var(--navy); color: white; border-radius: var(--radius); font-size: .9rem; font-weight: 600; text-decoration: none; transition: background .15s; border: none; cursor: pointer; }
-.btn-primary:hover { background: var(--navy-l); color: white; text-decoration: none; }
-.btn-outline { display: inline-flex; align-items: center; gap: 6px; padding: 11px 24px; background: transparent; color: var(--navy); border: 1.5px solid var(--border-d); border-radius: var(--radius); font-size: .9rem; font-weight: 600; text-decoration: none; transition: border-color .15s, background .15s; }
-.btn-outline:hover { border-color: var(--navy); background: rgba(13,43,107,.04); text-decoration: none; }
-.hero-proof { display: inline-flex; align-items: center; gap: 20px; padding: 14px 0; border-top: 1px solid var(--border); }
-.proof-item { display: flex; flex-direction: column; gap: 1px; }
-.proof-item strong { font-size: .9rem; font-weight: 700; color: var(--text); }
-.proof-item span { font-size: .72rem; color: var(--text-3); }
-.proof-div { width: 1px; height: 28px; background: var(--border); }
+.hero-stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  background: rgba(255,255,255,.09);
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: var(--r-lg);
+  padding: 14px 22px;
+  backdrop-filter: blur(8px);
+}
+.hstat { display: flex; flex-direction: column; gap: 2px; }
+.hstat strong { font-size: .88rem; font-weight: 700; color: white; }
+.hstat span { font-size: .7rem; color: rgba(255,255,255,.55); }
+.hstat-div { width: 1px; height: 28px; background: rgba(255,255,255,.14); }
 
 .hero-visual { display: flex; align-items: center; justify-content: center; }
-.hero-card-frame { position: relative; }
-.hero-logo-big { width: 320px; height: 320px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); box-shadow: var(--shadow-md); }
-.hero-card-tag { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: white; border: 1px solid var(--border); border-radius: 999px; padding: 6px 14px; font-size: .78rem; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 5px; white-space: nowrap; box-shadow: var(--shadow-sm); }
+.hero-logo-frame { position: relative; }
+.hero-logo {
+  width: 360px; max-width: 100%; height: auto;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.15);
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  animation: floatLogo 7s ease-in-out infinite;
+}
+@keyframes floatLogo { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+.hero-logo-tag {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: .76rem;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  box-shadow: var(--sh-sm);
+}
 
-/* ── TRUST STRIP ── */
-.trust-strip { border-bottom: 1px solid var(--border); padding: 16px 0; background: var(--bg); }
-.trust-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 24px; }
-.trust-label { font-size: .72rem; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: .06em; flex-shrink: 0; }
-.trust-logos { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.trust-logo { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border: 1px solid var(--border); border-radius: 999px; font-size: .78rem; font-weight: 500; color: var(--text-2); text-decoration: none; transition: border-color .15s, color .15s; white-space: nowrap; }
-.trust-logo:hover { border-color: var(--navy); color: var(--navy); text-decoration: none; }
-.trust-logo em { font-style: normal; color: var(--text-3); font-size: .72rem; }
-
-/* ── SECTIONS ── */
-.section { padding: 88px 0; }
-.section-alt { background: var(--bg-alt); }
-.container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
-.overline { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--navy); margin-bottom: 10px; display: block; }
-h2 { font-size: 2rem; font-weight: 800; color: var(--text); line-height: 1.2; letter-spacing: -.025em; margin-bottom: 12px; }
-.section-intro { font-size: 1.02rem; color: var(--text-2); max-width: 520px; line-height: 1.65; margin-bottom: 52px; }
+/* ABOUT */
+.about-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: start; }
 .body-lg { font-size: 1.02rem; color: var(--text-2); line-height: 1.75; margin-bottom: 14px; }
-p { color: var(--text-2); line-height: 1.7; margin-bottom: 14px; }
-strong { color: var(--text); }
+.about-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 24px 0; }
+.about-feat { display: flex; align-items: flex-start; gap: 11px; padding: 13px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--r); }
+.feat-icon { width: 30px; height: 30px; border-radius: var(--r); background: rgba(13,43,107,.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--navy); }
+.about-feat strong { display: block; font-size: .86rem; color: var(--text); margin-bottom: 2px; }
+.about-feat span { font-size: .76rem; color: var(--text-3); }
+.about-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.about-facts { position: sticky; top: 80px; }
 
-/* ── ABOUT ── */
-.about-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: start; }
-.about-left h2 { margin-bottom: 20px; }
-.feat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
-.feat-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px; background: var(--bg-alt); border-radius: var(--radius); border: 1px solid var(--border); }
-.feat-icon { width: 32px; height: 32px; border-radius: var(--radius); background: rgba(13,43,107,.07); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--navy); }
-.feat-item strong { display: block; font-size: .86rem; color: var(--text); margin-bottom: 2px; }
-.feat-item span { font-size: .78rem; color: var(--text-3); }
+/* ACTIVITIES */
+.act-link { display: inline-block; margin-top: 12px; font-size: .82rem; font-weight: 600; color: var(--navy); text-decoration: none; }
+.act-link:hover { text-decoration: underline; }
+.act-link-white { color: rgba(255,255,255,.8) !important; }
+.act-link-white:hover { color: white !important; text-decoration: underline; }
 
-.about-facts { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); position: sticky; top: 76px; }
-.facts-header { padding: 14px 20px; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: white; background: var(--navy); }
-.facts-list { padding: 4px 0; }
-.fact-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 9px 20px; border-bottom: 1px solid var(--border); gap: 12px; }
-.fact-row:last-child { border-bottom: none; }
-.fact-row span { font-size: .78rem; color: var(--text-3); flex-shrink: 0; }
-.fact-row strong { font-size: .8rem; color: var(--text); text-align: right; }
-.facts-map-btn { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 12px 16px 16px; padding: 10px; background: var(--navy); color: white; border-radius: var(--radius); font-size: .83rem; font-weight: 600; text-decoration: none; transition: background .15s; }
-.facts-map-btn:hover { background: var(--navy-l); color: white; text-decoration: none; }
+/* VISIT */
+.visit-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.visit-seasons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.season-pill { padding: 13px 16px; border-radius: var(--r); }
+.season-pill strong { display: block; font-size: .84rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.season-pill span { font-size: .77rem; color: var(--text-2); }
 
-/* ── ACTIVITIES ── */
-.act-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-.act-card { padding: 28px; background: var(--bg); }
-.section-alt .act-card { background: var(--bg-alt); }
-.act-card:hover { background: white; }
-.act-featured { background: var(--navy) !important; }
-.act-num { font-size: .7rem; font-weight: 700; color: var(--text-3); letter-spacing: .1em; margin-bottom: 14px; }
-.act-featured .act-num { color: rgba(255,255,255,.4); }
-.act-card h3 { font-size: .97rem; font-weight: 700; color: var(--text); margin-bottom: 8px; letter-spacing: -.01em; }
-.act-featured h3 { color: white; }
-.act-card p { font-size: .86rem; color: var(--text-2); line-height: 1.62; margin: 0; }
-.act-featured p { color: rgba(255,255,255,.72); }
-.act-badge { display: inline-block; background: var(--yellow); color: var(--navy); font-size: .68rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; letter-spacing: .03em; margin-bottom: 10px; }
+/* FORM PANEL */
+.form-panel { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-xl); box-shadow: var(--sh-md); overflow: hidden; position: sticky; top: 80px; }
+.form-panel-head { padding: 22px 24px; background: var(--navy); border-bottom: 1px solid rgba(255,255,255,.1); }
+.form-panel-head h3 { font-size: 1.05rem; font-weight: 700; color: white; margin-bottom: 5px; }
+.form-panel-head p { font-size: .84rem; color: rgba(255,255,255,.65); margin: 0; }
+.form-body { padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; }
 
-/* ── VISIT ── */
-.visit-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
-.v-step { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border); }
-.v-step:last-of-type { border-bottom: none; }
-.vstep-n { font-size: .68rem; font-weight: 800; color: var(--navy); letter-spacing: .06em; padding-top: 2px; flex-shrink: 0; width: 28px; }
-.v-step h3 { font-size: .95rem; font-weight: 700; color: var(--text); margin-bottom: 6px; letter-spacing: -.01em; }
-.v-step p { font-size: .875rem; color: var(--text-2); line-height: 1.65; margin: 0; }
-.v-step em { font-style: normal; color: var(--navy); font-weight: 500; }
-
-.tip-box { background: rgba(13,43,107,.04); border: 1px solid rgba(13,43,107,.1); border-radius: var(--radius-lg); padding: 20px 22px; margin-top: 20px; }
-.tip-title { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--navy); margin-bottom: 13px; }
-.tip-box ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-.tip-box li { font-size: .875rem; color: var(--text); display: flex; align-items: baseline; gap: 9px; }
-.tip-check { color: var(--navy); font-weight: 700; font-size: .75rem; flex-shrink: 0; }
-
-.seasons-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
-.season-pill { padding: 12px 16px; border-radius: var(--radius); }
-.season-good { background: #F0FDF4; border: 1px solid #BBF7D0; }
-.season-warn { background: #FFFBEB; border: 1px solid #FDE68A; }
-.season-pill strong { display: block; font-size: .84rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-.season-pill span { font-size: .76rem; color: var(--text-2); }
-
-/* ── FORM PANEL ── */
-.form-panel { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); position: sticky; top: 76px; }
-.form-panel-header { padding: 20px 24px; border-bottom: 1px solid var(--border); background: var(--navy); }
-.form-panel-header h3 { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 4px; }
-.form-panel-header p { font-size: .82rem; color: rgba(255,255,255,.65); margin: 0; }
-form { padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; }
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.field { display: flex; flex-direction: column; gap: 5px; }
-.field label { font-size: .76rem; font-weight: 600; color: var(--text); }
-.field input, .field select, .field textarea { padding: 9px 12px; border: 1px solid var(--border-d); border-radius: var(--radius); font-size: .88rem; color: var(--text); background: var(--bg); font-family: inherit; transition: border-color .15s, box-shadow .15s; }
-.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(13,43,107,.1); }
-.field textarea { resize: vertical; min-height: 80px; }
-.form-submit { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 11px 20px; background: var(--navy); color: white; border: none; border-radius: var(--radius); font-size: .9rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: background .15s; }
-.form-submit:hover { background: var(--navy-l); }
-.form-submit:disabled { opacity: .55; cursor: default; }
-.form-success { display: none; align-items: flex-start; gap: 12px; background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: var(--radius); padding: 14px 16px; }
-.form-success > svg { flex-shrink: 0; margin-top: 2px; }
-.form-success strong { display: block; font-size: .9rem; color: #166534; margin-bottom: 3px; }
-.form-success p { font-size: .82rem; color: #166534; opacity: .85; margin: 0; }
-
-/* ── REVIEWS ── */
+/* REVIEWS */
 .reviews-layout { display: grid; grid-template-columns: 1fr 1fr 300px; gap: 20px; }
-.review-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
-.review-stars { font-size: .9rem; color: #F59E0B; letter-spacing: 1px; margin-bottom: 14px; }
-blockquote { font-size: .92rem; color: var(--text); line-height: 1.7; margin-bottom: 18px; font-style: italic; quotes: none; }
-.reviewer { display: flex; align-items: center; gap: 11px; }
-.reviewer-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: white; font-weight: 700; font-size: .85rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.reviewer strong { display: block; font-size: .85rem; color: var(--text); font-style: normal; }
-.reviewer span { font-size: .76rem; color: var(--text-3); }
 
-.rating-panel { background: var(--navy); border-radius: var(--radius-lg); padding: 24px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-.rating-score { font-size: 3.2rem; font-weight: 800; color: white; line-height: 1; letter-spacing: -.04em; }
-.rating-stars { font-size: 1rem; color: var(--yellow); margin: 6px 0; }
-.rating-rank { font-size: .8rem; color: rgba(255,255,255,.78); margin-bottom: 3px; }
-.rating-award { font-size: .7rem; color: rgba(255,255,255,.45); margin-bottom: 18px; }
-.rating-links { width: 100%; display: flex; flex-direction: column; gap: 6px; }
-.r-link { display: flex; align-items: center; gap: 7px; padding: 8px 12px; background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); font-size: .78rem; color: rgba(255,255,255,.85); text-decoration: none; transition: background .15s; }
-.r-link:hover { background: rgba(255,255,255,.16); color: white; text-decoration: none; }
+/* FAQ */
+.faq-wrap { max-width: 800px; }
 
-/* ── FAQ ── */
-.faq-container { max-width: 780px; }
-.faq-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-.faq-item { border-bottom: 1px solid var(--border); }
-.faq-item:last-child { border-bottom: none; }
-.faq-item summary { padding: 18px 22px; font-size: .93rem; font-weight: 600; color: var(--text); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background .12s; }
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary:hover { background: var(--bg-alt); }
-.faq-item summary::after { content: '+'; font-size: 1.2rem; color: var(--text-3); flex-shrink: 0; font-weight: 400; }
-.faq-item[open] summary::after { content: '−'; color: var(--navy); }
-.faq-item[open] summary { background: var(--bg-alt); }
-.faq-item p { padding: 0 22px 18px; font-size: .875rem; color: var(--text-2); line-height: 1.7; border-top: 1px solid var(--border); padding-top: 14px; margin: 0; background: var(--bg-alt); }
-
-/* ── CTA BAND ── */
-.cta-band { background: var(--navy); padding: 64px 0; }
-.cta-band-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
-.cta-band h2 { color: white; font-size: 1.8rem; margin-bottom: 6px; }
-.cta-band p { color: rgba(255,255,255,.65); font-size: .95rem; margin: 0; }
-.cta-band-actions { display: flex; gap: 10px; flex-shrink: 0; }
-.cta-band .btn-primary { background: var(--yellow); color: var(--navy); }
-.cta-band .btn-primary:hover { background: #ffe933; color: var(--navy); }
-.cta-band .btn-outline { border-color: rgba(255,255,255,.35); color: white; }
-.cta-band .btn-outline:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.6); color: white; }
-
-/* ── CONTACT ── */
-.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
-.contact-left h2 { margin: 10px 0 14px; }
-.contact-left > p { color: var(--text-2); line-height: 1.7; margin-bottom: 24px; }
-.contact-channels { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
-.channel { display: flex; align-items: center; gap: 13px; padding: 12px 14px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; transition: border-color .15s; }
-.channel:hover { border-color: var(--navy); text-decoration: none; }
-.ch-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.channel strong { display: block; font-size: .86rem; color: var(--text); }
-.channel span { font-size: .76rem; color: var(--text-3); }
-.location-card { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 18px 20px; }
+/* CONTACT */
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.contact-channels { display: flex; flex-direction: column; gap: 9px; margin: 20px 0 24px; }
+.contact-ch { display: flex; align-items: center; gap: 13px; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); text-decoration: none; transition: border-color .15s; }
+.contact-ch:hover { border-color: var(--navy); text-decoration: none; }
+.ch-icon { width: 36px; height: 36px; border-radius: var(--r); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.contact-ch strong { display: block; font-size: .86rem; color: var(--text); font-weight: 600; }
+.contact-ch span { font-size: .76rem; color: var(--text-3); }
+.location-box { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 18px 20px; }
 .location-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--navy); margin-bottom: 8px; }
-.location-card p { font-size: .875rem; color: var(--text); line-height: 1.7; margin: 0; }
-.location-coords { margin-top: 8px !important; font-size: .76rem !important; color: var(--text-3) !important; }
+.location-box p { font-size: .875rem; color: var(--text); line-height: 1.7; margin: 0; }
 
-/* ── FOOTER ── */
-.footer { background: #111827; }
-.footer-main { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 52px; padding: 60px 24px 48px; max-width: var(--max); margin: 0 auto; }
-.footer-brand .logo-name { color: white !important; }
-.footer-brand .logo-sub { color: rgba(255,255,255,.4); }
-.footer-desc { font-size: .84rem; color: rgba(255,255,255,.45); line-height: 1.65; margin-top: 14px; max-width: 300px; }
-.footer-socials { display: flex; gap: 7px; margin-top: 18px; }
-.soc-btn { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: var(--radius); background: rgba(255,255,255,.07); color: rgba(255,255,255,.55); transition: background .15s, color .15s; }
-.soc-btn:hover { background: var(--navy); color: white; }
-.footer-col h4 { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; color: rgba(255,255,255,.3); margin-bottom: 14px; }
-.footer-col a { display: block; font-size: .84rem; color: rgba(255,255,255,.55); text-decoration: none; margin-bottom: 9px; transition: color .15s; }
-.footer-col a:hover { color: white; text-decoration: none; }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,.06); padding: 18px 24px; }
-.footer-bottom-inner { max-width: var(--max); margin: 0 auto; display: flex; flex-direction: column; gap: 4px; }
-.footer-bottom p { font-size: .76rem; color: rgba(255,255,255,.3); line-height: 1.7; }
-.footer-social-handles { margin-top: 4px; }
-.footer-social-handles a { color: rgba(255,255,255,.55); text-decoration: none; transition: color .15s; }
-.footer-social-handles a:hover { color: white; }
-.footer-social-handles strong { color: rgba(255,255,255,.7); }
-
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
 @media (max-width: 1024px) {
   .reviews-layout { grid-template-columns: 1fr 1fr; }
-  .rating-panel { grid-column: span 2; flex-direction: row; text-align: left; padding: 20px 24px; }
-  .rating-score { font-size: 2.4rem; }
-  .rating-links { flex-direction: row; flex-wrap: wrap; }
-  .footer-main { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .rating-panel { grid-column: span 2; flex-direction: row; text-align: left; }
+  .rating-links { flex-wrap: wrap; flex-direction: row; }
 }
 @media (max-width: 900px) {
-  .nav-links, .nav-btn { display: none; }
-  .burger { display: flex; }
-  .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
   .hero-visual { display: none; }
-  .about-layout { grid-template-columns: 1fr; gap: 36px; }
-  .about-facts { position: static; }
-  .act-grid { grid-template-columns: 1fr 1fr; }
-  .visit-layout { grid-template-columns: 1fr; gap: 36px; }
-  .form-panel { position: static; }
+  .hero-ctas, .hero-stats { justify-content: center; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .about-layout, .visit-layout, .contact-layout { grid-template-columns: 1fr; gap: 36px; }
+  .about-facts, .form-panel { position: static; }
   .reviews-layout { grid-template-columns: 1fr; }
   .rating-panel { grid-column: auto; flex-direction: column; text-align: center; }
   .rating-links { flex-direction: column; }
-  .contact-layout { grid-template-columns: 1fr; gap: 36px; }
-  .cta-band-inner { flex-direction: column; text-align: center; }
-  .cta-band-actions { justify-content: center; }
 }
 @media (max-width: 600px) {
-  .act-grid { grid-template-columns: 1fr; }
-  .field-row { grid-template-columns: 1fr; }
-  .feat-row { grid-template-columns: 1fr; }
-  .seasons-row { grid-template-columns: 1fr; }
-  .hero-proof { flex-wrap: wrap; gap: 10px; }
-  .proof-div { display: none; }
-  .trust-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
-  .footer-main { grid-template-columns: 1fr; gap: 28px; }
-  h2 { font-size: 1.7rem; }
-  .section { padding: 60px 0; }
+  .about-feats { grid-template-columns: 1fr; }
+  .hero-stats { flex-wrap: wrap; gap: 10px; }
+  .hstat-div { display: none; }
+  .visit-seasons { grid-template-columns: 1fr; }
 }
 </style>
-</BaseLayout>

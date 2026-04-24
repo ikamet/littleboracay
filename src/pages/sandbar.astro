@@ -1,207 +1,103 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
----
+import TrustStrip from '../components/TrustStrip.astro';
 
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  "name": "Little Boracay Sandbar",
+  "description": "A natural tidal sandbar in Calatagan, Batangas with shallow turquoise waters and white sand.",
+  "address": { "@type": "PostalAddress", "addressLocality": "Calatagan", "addressRegion": "Batangas", "addressCountry": "PH" },
+  "geo": { "@type": "GeoCoordinates", "latitude": "13.8198041", "longitude": "120.6157737" }
+};
+---
 <BaseLayout
   title="Little Boracay Sandbar Calatagan Batangas | Natural Tidal Sandbar"
-  description="Learn about the Little Boracay sandbar in Calatagan, Batangas. A natural tidal sandbar with shallow turquoise waters, white sand, and stunning coastal scenery just hours from Manila."
+  description="The Little Boracay sandbar in Calatagan, Batangas is a natural tidal formation with shallow turquoise waters, white sand, and floating bamboo cottages. Learn everything about this unique destination."
+  schema={schema}
 >
-
-<section class="page-hero">
+<div class="page-hero">
   <div class="container">
-    <span class="badge badge-ocean">The Destination</span>
+    <span class="overline">The Destination</span>
     <h1>The Little Boracay Sandbar</h1>
-    <p class="page-lead">A natural tidal sandbar off the coast of Calatagan, Batangas — white sand, turquoise-clear shallow water, and a constantly changing coastal landscape.</p>
+    <p class="page-lead">A natural tidal sandbar off the coast of Calatagan, Batangas — white sand, turquoise-clear shallow water, and floating bamboo cottages.</p>
   </div>
-</section>
-
+</div>
+<TrustStrip />
 <section class="section">
   <div class="container">
-    <div class="sandbar-grid">
-      <div class="sandbar-text">
-        <h2>What is the Little Boracay Sandbar?</h2>
-        <p>The <strong>Little Boracay sandbar</strong> is a natural tidal formation located off the western coastline of <strong>Calatagan, Batangas</strong>, facing the South China Sea. Unlike a beach resort or developed tourist facility, Little Boracay is entirely a natural environment — a shifting sandbar that emerges and changes with the tides.</p>
-        <p>The sandbar features wide stretches of white sand and shallow, crystal-clear water that is warm and calm, making it ideal for wading, swimming, and relaxation. The shallow water extends quite far from the sand, creating an unusually expansive wading area.</p>
-        <p>The destination earned the name "Little Boracay" from the remarkable similarity in scenery to the world-famous Boracay Island in Aklan — same white sand, similar turquoise water — but accessible from Metro Manila without a flight.</p>
-
-        <h3 style="margin-top:32px;">The Tidal Nature of the Sandbar</h3>
-        <p>One of the most unique aspects of Little Boracay is that the sandbar's size, shape, and accessibility are constantly changing with the tides. During low tide — particularly in the morning hours — the sandbar is at its widest and most accessible. As the tide rises throughout the day, water levels increase and the visible sandbar narrows.</p>
-        <p>This means every visit to Little Boracay is slightly different. The ever-changing coastal landscape is part of what makes the destination so photogenic and memorable.</p>
-      </div>
-      <div class="sandbar-facts">
-        <div class="fact-card">
-          <h3>Sandbar Quick Facts</h3>
-          <div class="fact-list">
-            <div class="fact-row">
-              <span class="fact-label">Type</span>
-              <span class="fact-value">Natural tidal sandbar</span>
-            </div>
-            <div class="fact-row">
-              <span class="fact-label">Location</span>
-              <span class="fact-value">Calatagan, Batangas, Philippines</span>
-            </div>
-            <div class="fact-row">
-              <span class="fact-label">Water</span>
-              <span class="fact-value">Shallow, turquoise, clear</span>
-            </div>
-            <div class="fact-row">
-              <span class="fact-label">Access</span>
-              <span class="fact-value">Boat only from Calatagan coast</span>
-            </div>
-            <div class="fact-row">
-              <span class="fact-label">Body of water</span>
-              <span class="fact-value">South China Sea</span>
-            </div>
-            <div class="fact-row">
-              <span class="fact-label">Best visited</span>
-              <span class="fact-value">Morning low tide</span>
-            </div>
-            <div class="fact-row">
-              <span class="fact-label">Facilities</span>
-              <span class="fact-value">Floating bamboo cottages</span>
-            </div>
-            <div class="fact-row">
-              <span class="fact-label">Photography</span>
-              <span class="fact-value">Excellent — drone and beach</span>
-            </div>
-          </div>
-          <a href="/visit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:20px;">Plan Your Visit</a>
+    <div class="two-col">
+      <div>
+        <h2 class="section-title">What is the Little Boracay Sandbar?</h2>
+        <p>The <strong>Little Boracay sandbar</strong> is a natural tidal formation located off the western coastline of <strong>Calatagan, Batangas</strong>, facing the South China Sea. Unlike a developed beach resort, it is entirely a natural environment — a shifting sandbar that emerges and changes with the tides.</p>
+        <p>The sandbar features wide stretches of white sand and shallow, crystal-clear water that is warm, calm, and safe for swimming. The water's remarkable turquoise colour comes from the white sandy bottom and the angle of light — similar to what makes Boracay Island in Aklan famous.</p>
+        <p>The destination earned the name "Little Boracay" because of this visual similarity to Boracay Island — but at a fraction of the distance and cost from Manila.</p>
+        <h3 style="margin-top:28px;margin-bottom:12px;">The Tidal Nature of the Sandbar</h3>
+        <p>One of the most unique aspects of Little Boracay is that the sandbar constantly changes with the tides. During low tide — particularly in the morning hours — the sandbar is at its widest and most accessible. As the tide rises throughout the day, water levels increase and the visible sandbar narrows. This makes every visit slightly different.</p>
+        <div class="info-callout">
+          <strong>Best tip:</strong> Visit in the morning during low tide for the widest sandbar, best photography, and calmest water conditions.
+        </div>
+        <h3 style="margin-top:28px;margin-bottom:12px;">Little Boracay vs. Boracay Island — What's the Difference?</h3>
+        <div class="compare-table">
+          <table>
+            <thead><tr><th>Feature</th><th>Little Boracay (Calatagan)</th><th>Boracay Island (Aklan)</th></tr></thead>
+            <tbody>
+              <tr><td>Location</td><td>Calatagan, Batangas</td><td>Malay, Aklan</td></tr>
+              <tr><td>From Manila</td><td>3–4 hr drive</td><td>Flight + ferry (~3–4 hrs)</td></tr>
+              <tr><td>Type</td><td>Natural tidal sandbar</td><td>Developed island resort</td></tr>
+              <tr><td>Accommodation</td><td>Day trip only</td><td>Full hotel options</td></tr>
+              <tr><td>Crowds</td><td>Quieter, more intimate</td><td>Major tourist destination</td></tr>
+              <tr><td>Cost</td><td>Lower — day trip</td><td>Higher — multi-day</td></tr>
+              <tr><td>White sand</td><td>Yes</td><td>Yes (White Beach)</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="section bg-white">
-  <div class="container">
-    <div class="section-header">
-      <span class="badge badge-ocean">The Experience</span>
-      <h2>What to Expect at the Sandbar</h2>
-    </div>
-    <div class="grid-3">
-      <div class="exp-card">
-        <h3>🌊 The Water</h3>
-        <p>The water at Little Boracay is remarkably shallow and clear, often appearing in shades of turquoise and aquamarine. The sandy bottom is visible even in deeper sections, contributing to the signature color. Water temperatures are warm year-round, typical of tropical Philippine coastal waters.</p>
-      </div>
-      <div class="exp-card">
-        <h3>🏖️ The Sand</h3>
-        <p>The sandbar features white to cream-colored sand, fine in texture and bright in sunlight — earning the comparison to Boracay's famous beaches. The sandbar's width varies with the tide, from an expansive white beach at low tide to a narrow strip at high tide.</p>
-      </div>
-      <div class="exp-card">
-        <h3>🏡 The Cottages</h3>
-        <p>Floating bamboo cottages are anchored just offshore on the sandbar, rising and falling slightly with the water. These provide shaded, over-water gathering spaces for groups. Visitors typically rent a cottage for the day and use it as a base for swimming and relaxing.</p>
-      </div>
-      <div class="exp-card">
-        <h3>📸 Photography</h3>
-        <p>Little Boracay is a favorite spot for photographers and content creators. The combination of white sand, turquoise water, floating cottages, and open sky creates stunning compositions. Drone photography from above the sandbar is particularly dramatic at low tide.</p>
-      </div>
-      <div class="exp-card">
-        <h3>🤿 Marine Life</h3>
-        <p>The coastal waters around the sandbar support a variety of marine life. Snorkeling in the clearer sections can reveal small reef fish and invertebrates. Always respect the natural environment and avoid disturbing marine life or the sandbar ecosystem.</p>
-      </div>
-      <div class="exp-card">
-        <h3>🌅 Atmosphere</h3>
-        <p>Little Boracay has a relaxed, unhurried atmosphere. Most visitors spend a full day at the sandbar — swimming, floating, eating, socializing, and enjoying the scenery. Weekend visits can be busy, especially during peak season, while weekday visits are typically quieter.</p>
+      <div>
+        <div class="fact-table" style="position:sticky;top:80px;">
+          <div class="fact-table-header">Sandbar Quick Facts</div>
+          <div class="fact-row"><span>Type</span><strong>Natural tidal sandbar</strong></div>
+          <div class="fact-row"><span>Location</span><strong>Calatagan, Batangas</strong></div>
+          <div class="fact-row"><span>Coordinates</span><strong>13.8198°N · 120.6158°E</strong></div>
+          <div class="fact-row"><span>Body of water</span><strong>South China Sea</strong></div>
+          <div class="fact-row"><span>Water type</span><strong>Shallow, calm, clear</strong></div>
+          <div class="fact-row"><span>Access</span><strong>Boat only from coast</strong></div>
+          <div class="fact-row"><span>Best visited</span><strong>Morning low tide</strong></div>
+          <div class="fact-row"><span>Peak season</span><strong>November – May</strong></div>
+          <div class="fact-row"><span>Photography</span><strong>Excellent — drone + beach</strong></div>
+          <div class="fact-row"><span>Facilities</span><strong>Floating bamboo cottages</strong></div>
+        </div>
+        <a href="/contact" class="btn btn-navy" style="width:100%;justify-content:center;margin-top:12px;">Book a Visit →</a>
+        <a href="https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:8px;">View on Google Maps →</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <h2>Little Boracay vs. Boracay Island — What's the Difference?</h2>
-    <div class="comparison-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Feature</th>
-            <th>Little Boracay (Calatagan)</th>
-            <th>Boracay Island (Aklan)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Location</td><td>Calatagan, Batangas</td><td>Malay, Aklan</td></tr>
-          <tr><td>Access from Manila</td><td>3–4 hour drive</td><td>Flight + ferry (~3–4 hrs total)</td></tr>
-          <tr><td>Type</td><td>Natural tidal sandbar</td><td>Developed island resort</td></tr>
-          <tr><td>Accommodation</td><td>No overnight stay on sandbar</td><td>Full resort hotels available</td></tr>
-          <tr><td>Crowds</td><td>Less crowded, quieter</td><td>Major tourist destination</td></tr>
-          <tr><td>Cost</td><td>Lower cost day trip</td><td>Higher cost multi-day trip</td></tr>
-          <tr><td>Best for</td><td>Day trips from Manila</td><td>Beach vacations, nightlife</td></tr>
-          <tr><td>White sand</td><td>Yes</td><td>Yes (White Beach)</td></tr>
-          <tr><td>Clear water</td><td>Yes</td><td>Yes</td></tr>
-        </tbody>
-      </table>
+<div class="cta-band">
+  <div class="container cta-band-inner">
+    <div><h2>Ready to See the Sandbar?</h2><p>Book your floating cottage and plan your visit to Little Boracay today.</p></div>
+    <div class="cta-actions">
+      <a href="/contact" class="btn btn-yellow btn-lg">Book Now</a>
+      <a href="/visit" class="btn btn-outline-white btn-lg">Plan a Visit</a>
     </div>
   </div>
-</section>
-
+</div>
 </BaseLayout>
 
 <style>
-.page-hero {
-  padding: 60px 0 40px;
-  background: linear-gradient(to bottom, var(--color-ocean-light), var(--color-sand));
-}
-.page-hero h1 { font-size: 2.6rem; margin: 16px 0 16px; }
-.page-lead { font-size: 1.1rem; color: #444; max-width: 640px; }
-
-.sandbar-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 56px;
-  align-items: start;
-}
-.sandbar-text h2 { font-size: 1.9rem; margin-bottom: 20px; }
-.sandbar-text h3 { font-size: 1.2rem; }
-.sandbar-text p { color: #444; margin-bottom: 16px; line-height: 1.7; }
-
-.fact-card {
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
-  padding: 28px;
-  box-shadow: var(--shadow-md);
-  position: sticky;
-  top: 90px;
-}
-.fact-card h3 { font-size: 1.1rem; margin-bottom: 20px; }
-.fact-list { display: flex; flex-direction: column; gap: 0; }
-.fact-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--color-border);
-  gap: 16px;
-}
-.fact-row:last-child { border-bottom: none; }
-.fact-label { font-size: 0.8rem; color: var(--color-muted); font-weight: 500; flex-shrink: 0; }
-.fact-value { font-size: 0.85rem; text-align: right; color: var(--color-ink); }
-
-.section-header { text-align: center; margin-bottom: 40px; }
-.section-header h2 { font-size: 2rem; margin: 14px 0; }
-
-.bg-white { background: var(--color-white); }
-.exp-card {
-  padding: 24px;
-  background: var(--color-sand);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-}
-.exp-card h3 { font-size: 1.05rem; margin-bottom: 10px; }
-.exp-card p { font-size: 0.9rem; color: #444; line-height: 1.65; }
-
-.comparison-table { margin-top: 28px; overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
-thead { background: var(--color-ocean); color: white; }
-th { padding: 14px 18px; text-align: left; font-size: 0.9rem; font-weight: 600; }
-td { padding: 12px 18px; font-size: 0.88rem; color: #444; border-bottom: 1px solid var(--color-border); }
+.page-hero { padding: 60px 0 40px; background: linear-gradient(to bottom, rgba(13,43,107,.06), var(--bg)); border-bottom: 1px solid var(--border); }
+.page-hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: var(--text); margin: 10px 0 14px; letter-spacing: -.03em; }
+.page-lead { font-size: 1.05rem; color: var(--text-2); max-width: 620px; line-height: 1.7; }
+.two-col { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: start; }
+.info-callout { background: rgba(13,43,107,.06); border-left: 3px solid var(--navy); padding: 14px 18px; border-radius: 0 var(--r) var(--r) 0; margin: 20px 0; font-size: .9rem; color: var(--text); }
+.compare-table { overflow-x: auto; margin-top: 16px; }
+table { width: 100%; border-collapse: collapse; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--sh-xs); font-size: .86rem; }
+thead { background: var(--navy); color: white; }
+th { padding: 12px 16px; text-align: left; font-weight: 600; font-size: .82rem; }
+td { padding: 10px 16px; color: var(--text-2); border-bottom: 1px solid var(--border); }
 tr:last-child td { border-bottom: none; }
-tr:nth-child(even) { background: var(--color-sand); }
-td:first-child { font-weight: 500; color: var(--color-ink); }
-
-@media (max-width: 900px) {
-  .sandbar-grid { grid-template-columns: 1fr; gap: 32px; }
-  .fact-card { position: static; }
-}
+tr:nth-child(even) { background: var(--bg-alt); }
+td:first-child { font-weight: 600; color: var(--text); }
+@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; gap: 32px; } }
 </style>

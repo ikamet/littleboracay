@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Things to Do at Little Boracay Calatagan Batangas",
+  "description": "Activities and things to do at Little Boracay sandbar in Calatagan, Batangas.",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Boat Tours to the Sandbar" },
+    { "@type": "ListItem", "position": 2, "name": "Floating Cottage Experience" },
+    { "@type": "ListItem", "position": 3, "name": "Swimming and Wading" },
+    { "@type": "ListItem", "position": 4, "name": "Snorkeling" },
+    { "@type": "ListItem", "position": 5, "name": "Drone and Beach Photography" },
+    { "@type": "ListItem", "position": 6, "name": "Island Day Trips from Manila" }
+  ]
+};
+
+const activities = [
+  { id: "boat-tours", num: "01", title: "Boat Tours to the Sandbar", desc: "Local boat operators run regular transfers from Calatagan's coastal barangays to the Little Boracay sandbar. The boat ride takes approximately 10–20 minutes depending on conditions. Most operators offer half-day and full-day packages that include the boat transfer, floating cottage rental, and guide service.", tip: "Book in advance on weekends and public holidays. Boats may not operate in rough weather or high tides." },
+  { id: "floating-cottages", num: "02", title: "Floating Cottage Experience", desc: "The signature Little Boracay activity. Floating bamboo cottages are anchored over the shallow sandbar waters, giving groups a shaded over-water space to relax, eat, swim, and enjoy 360° sea views. Step off the cottage edge directly into crystal-clear shallow water — one of the most unique experiences available within driving distance of Manila.", tip: "Bring your own food and drinks. Food service at the sandbar is very limited.", featured: true },
+  { id: "swimming", num: "03", title: "Swimming and Wading", desc: "The calm, warm, shallow waters of Little Boracay are ideal for swimming and wading. The clear sandy bottom is visible even in deeper sections. The water depth varies with the tide — during low tide, large areas are shallow enough for children to stand. The conditions are safe for non-swimmers, beginners, and families.", tip: "Morning low tide offers the safest and most enjoyable swimming conditions." },
+  { id: "snorkeling", num: "04", title: "Snorkeling", desc: "The clear coastal waters around Little Boracay support various marine life. Snorkeling in the clearer sections reveals small reef fish, sea urchins, and other invertebrates. Bring your own snorkeling gear for the best experience. Water clarity is typically best during morning hours.", tip: "Use reef-safe sunscreen to protect the marine environment." },
+  { id: "photography", num: "05", title: "Drone and Beach Photography", desc: "Little Boracay is one of the most photographed sandbar destinations in Batangas. The combination of white sand, turquoise water, floating cottages, and open sky creates stunning compositions at any angle. Drone photography from above the sandbar at low tide is particularly spectacular — the aerial view reveals the full extent of the sandbar.", tip: "Always follow CAAP (Civil Aviation Authority of the Philippines) drone regulations. Register your drone and check local restrictions before flying." },
+  { id: "day-trips", num: "06", title: "Island Day Trips from Manila", desc: "The most popular way to experience Little Boracay is a full-day trip from Metro Manila. Leave early morning, arrive at the sandbar by 9–10 AM, spend 4–6 hours swimming and enjoying the floating cottage, then head back in the afternoon. The entire experience — drive, boat, sandbar, and return — is doable in a single day.", tip: "Leave Manila by 4:30–6:00 AM on weekends to beat SLEX traffic. Aim to be at the jump-off point by 8–9 AM." }
+];
+---
+<BaseLayout
+  title="Things to Do at Little Boracay Calatagan | Activities Guide"
+  description="Everything to do at Little Boracay sandbar in Calatagan, Batangas. Floating cottages, boat tours, swimming, snorkeling, photography, and day trips from Manila."
+  schema={schema}
+>
+<div class="page-hero">
+  <div class="container">
+    <span class="overline">Activities</span>
+    <h1>Things to Do at Little Boracay</h1>
+    <p class="page-lead">From floating bamboo cottages to drone photography — everything you can experience at Little Boracay sandbar in Calatagan, Batangas.</p>
+  </div>
+</div>
+<TrustStrip />
+<section class="section">
+  <div class="container">
+    {activities.map(act => (
+      <div class:list={["act-section", { "act-featured-section": act.featured }]} id={act.id}>
+        <div class="act-section-inner">
+          <div class="act-section-text">
+            <div class="act-section-num">{act.num}</div>
+            <h2>{act.title}</h2>
+            <p>{act.desc}</p>
+            {act.tip && (
+              <div class="act-tip">
+                <strong>💡 Tip:</strong> {act.tip}
+              </div>
+            )}
+          </div>
+          {act.featured && (
+            <div class="act-section-badge-wrap">
+              <span class="badge badge-yellow" style="font-size:.8rem;padding:6px 16px;">Most Popular Activity</span>
+              <a href="/cottages" class="btn btn-yellow" style="margin-top:12px;">Learn About Cottages →</a>
+              <a href="/contact" class="btn btn-outline-white" style="margin-top:8px;">Book Now →</a>
+            </div>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+<div class="cta-band">
+  <div class="container cta-band-inner">
+    <div><h2>Plan Your Little Boracay Trip</h2><p>Book your floating cottage and activities for your visit to Calatagan, Batangas.</p></div>
+    <div class="cta-actions">
+      <a href="/contact" class="btn btn-yellow btn-lg">Book Now</a>
+      <a href="/visit" class="btn btn-outline-white btn-lg">Travel Guide</a>
+    </div>
+  </div>
+</div>
+</BaseLayout>
+
+<style>
+.page-hero { padding: 60px 0 40px; background: linear-gradient(to bottom, rgba(13,43,107,.06), var(--bg)); border-bottom: 1px solid var(--border); }
+.page-hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: var(--text); margin: 10px 0 14px; letter-spacing: -.03em; }
+.page-lead { font-size: 1.05rem; color: var(--text-2); max-width: 620px; line-height: 1.7; }
+.act-section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+.act-section:last-child { border-bottom: none; }
+.act-featured-section { background: var(--navy); margin: 0 -24px; padding: 48px 24px; border-radius: var(--r-xl); }
+.act-featured-section h2, .act-featured-section p { color: white !important; }
+.act-featured-section .act-section-num { color: rgba(255,255,255,.25) !important; }
+.act-section-inner { display: flex; gap: 40px; align-items: flex-start; justify-content: space-between; }
+.act-section-text { flex: 1; }
+.act-section-num { font-size: .72rem; font-weight: 800; color: var(--text-3); letter-spacing: .1em; margin-bottom: 10px; }
+.act-section h2 { font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 14px; letter-spacing: -.02em; }
+.act-section p { font-size: .95rem; color: var(--text-2); line-height: 1.75; max-width: 680px; }
+.act-tip { background: rgba(13,43,107,.06); border-left: 3px solid var(--navy); padding: 12px 16px; border-radius: 0 var(--r) var(--r) 0; margin-top: 16px; font-size: .875rem; color: var(--text); }
+.act-featured-section .act-tip { background: rgba(255,255,255,.12); border-left-color: var(--yellow); color: white; }
+.act-section-badge-wrap { display: flex; flex-direction: column; align-items: flex-start; flex-shrink: 0; gap: 0; }
+@media (max-width: 700px) { .act-section-inner { flex-direction: column; } }
+</style>

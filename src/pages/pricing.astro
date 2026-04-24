@@ -1,0 +1,408 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Little Boracay Floating Cottage Packages and Pricing",
+  "description": "Pricing for floating cottage rentals and boat tours at Little Boracay sandbar in Calatagan, Batangas.",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Product",
+        "name": "Little Boracay Standard Package",
+        "description": "Floating cottage for up to 10 persons at Little Boracay sandbar in Calatagan, Batangas. Includes boat transfer and full day access.",
+        "offers": {
+          "@type": "Offer",
+          "price": "5000",
+          "priceCurrency": "PHP",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Product",
+        "name": "Little Boracay Premier Package",
+        "description": "Premier floating cottage package at Little Boracay sandbar. Upgraded experience for groups seeking a premium over-water day at Calatagan, Batangas.",
+        "offers": {
+          "@type": "Offer",
+          "price": "8000",
+          "priceCurrency": "PHP",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Product",
+        "name": "Starfish Sandbar + Little Boracay Combo Tour",
+        "description": "Discover Starfish Sandbar by floating cottage. Journey to Little Boracay for snorkeling, dining, and relaxing on a floating cottage, followed by exploring the enchanting Starfish Sandbar.",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "PHP",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Little Boracay Pricing | Floating Cottage Packages & Tour Rates"
+  description="Floating cottage packages at Little Boracay in Calatagan, Batangas. Standard Package ₱5,000 for up to 10 persons. Premier Package ₱8,000. Starfish Sandbar combo tours available."
+  schema={schema}
+>
+
+<div class="page-hero">
+  <div class="container">
+    <span class="overline">Pricing & Packages</span>
+    <h1>Little Boracay Packages</h1>
+    <p class="page-lead">Transparent, honest pricing for your floating cottage day at Little Boracay sandbar in Calatagan, Batangas. No hidden fees — just a memorable experience.</p>
+  </div>
+</div>
+
+<TrustStrip />
+
+<!-- PACKAGES -->
+<section class="section">
+  <div class="container">
+    <div class="pricing-intro">
+      <span class="overline">Our Packages</span>
+      <h2 class="section-title">Choose Your Experience</h2>
+      <p class="section-intro">All packages include boat transfer to the sandbar and access to the floating cottage. Bring your own food and drinks for the full experience.</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- STANDARD -->
+      <div class="pricing-card">
+        <div class="pricing-card-head">
+          <div class="pricing-tag">Standard</div>
+          <div class="pricing-amount">
+            <span class="currency">₱</span>
+            <span class="amount">5,000</span>
+          </div>
+          <div class="pricing-per">per group · up to 10 persons</div>
+        </div>
+        <div class="pricing-card-body">
+          <p class="pricing-desc">The classic Little Boracay experience. A full day on a floating bamboo cottage anchored over the crystal-clear sandbar waters.</p>
+          <ul class="pricing-features">
+            <li><span class="pf-check">✓</span>Boat transfer to Little Boracay sandbar</li>
+            <li><span class="pf-check">✓</span>Full day floating cottage (up to 10 persons)</li>
+            <li><span class="pf-check">✓</span>Shaded over-water cottage with seating</li>
+            <li><span class="pf-check">✓</span>Direct water access for swimming</li>
+            <li><span class="pf-check">✓</span>Return boat transfer</li>
+            <li><span class="pf-check">✓</span>Guide assistance</li>
+          </ul>
+          <a href="/contact" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:8px;">Book Standard →</a>
+        </div>
+      </div>
+
+      <!-- PREMIER -->
+      <div class="pricing-card pricing-card-featured">
+        <div class="pricing-popular-badge">Most Popular</div>
+        <div class="pricing-card-head">
+          <div class="pricing-tag">Premier</div>
+          <div class="pricing-amount">
+            <span class="currency">₱</span>
+            <span class="amount">8,000</span>
+          </div>
+          <div class="pricing-per">per group · premium experience</div>
+        </div>
+        <div class="pricing-card-body">
+          <p class="pricing-desc">An elevated Little Boracay experience with a premium cottage setup. Ideal for special occasions, corporate events, and groups wanting the best.</p>
+          <ul class="pricing-features">
+            <li><span class="pf-check">✓</span>Everything in Standard</li>
+            <li><span class="pf-check">✓</span>Premier floating cottage — larger, more comfortable</li>
+            <li><span class="pf-check">✓</span>Priority cottage placement on the sandbar</li>
+            <li><span class="pf-check">✓</span>Extended cottage access</li>
+            <li><span class="pf-check">✓</span>Dedicated host / coordinator</li>
+            <li><span class="pf-check">✓</span>Suitable for special occasions &amp; celebrations</li>
+          </ul>
+          <a href="/contact" class="btn btn-yellow" style="width:100%;justify-content:center;margin-top:8px;">Book Premier →</a>
+        </div>
+      </div>
+
+      <!-- STARFISH COMBO -->
+      <div class="pricing-card pricing-card-combo">
+        <div class="pricing-card-head">
+          <div class="pricing-tag" style="color:var(--navy);">Combo Tour</div>
+          <div class="combo-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.5"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          </div>
+          <div class="pricing-amount combo-amount">
+            <span class="combo-ask">Ask for rates</span>
+          </div>
+          <div class="pricing-per">Little Boracay + Starfish Sandbar</div>
+        </div>
+        <div class="pricing-card-body">
+          <div class="combo-highlight">
+            <p class="combo-tagline">"Discover Starfish Sandbar by floating cottage"</p>
+            <p>Journey to <strong>Little Boracay</strong> for snorkeling, dining, and relaxing on a floating cottage — followed by exploring the enchanting <strong>Starfish Sandbar</strong>.</p>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="pf-check">✓</span>Floating cottage at Little Boracay sandbar</li>
+            <li><span class="pf-check">✓</span>Snorkeling at Little Boracay</li>
+            <li><span class="pf-check">✓</span>Dining on the floating cottage</li>
+            <li><span class="pf-check">✓</span>Boat tour to Starfish Sandbar</li>
+            <li><span class="pf-check">✓</span>Explore the Starfish Sandbar up close</li>
+            <li><span class="pf-check">✓</span>Full-day guided experience</li>
+          </ul>
+          <a href="/contact" class="btn btn-navy" style="width:100%;justify-content:center;margin-top:8px;">Enquire About Combo →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- NOTES -->
+    <div class="pricing-notes">
+      <h3>Important Notes</h3>
+      <div class="notes-grid">
+        <div class="note-item">
+          <div class="note-icon">💵</div>
+          <div>
+            <strong>Cash Only (PHP)</strong>
+            <p>All payments are in Philippine Pesos cash. Most operators do not accept credit cards or e-wallets. Please prepare exact amounts.</p>
+          </div>
+        </div>
+        <div class="note-item">
+          <div class="note-icon">👥</div>
+          <div>
+            <strong>Group Rates Available</strong>
+            <p>For groups over 20, corporate team buildings, and school trips — contact us for custom rates and arrangements.</p>
+          </div>
+        </div>
+        <div class="note-item">
+          <div class="note-icon">🌤️</div>
+          <div>
+            <strong>Weather-Dependent</strong>
+            <p>Boat operations and cottage access are subject to weather and tide conditions. We will notify you in advance of any changes.</p>
+          </div>
+        </div>
+        <div class="note-item">
+          <div class="note-icon">📅</div>
+          <div>
+            <strong>Book in Advance</strong>
+            <p>Peak weekends and Philippine holidays fill up fast. We recommend booking at least 2–3 days ahead to secure your cottage.</p>
+          </div>
+        </div>
+        <div class="note-item">
+          <div class="note-icon">🍱</div>
+          <div>
+            <strong>Bring Your Own Food</strong>
+            <p>Food and drink service at the sandbar is very limited. We strongly recommend bringing a packed cooler with meals and beverages for your group.</p>
+          </div>
+        </div>
+        <div class="note-item">
+          <div class="note-icon">🌊</div>
+          <div>
+            <strong>Tides & Timing</strong>
+            <p>Morning arrival (8–10 AM) is ideal for the best sandbar conditions. The sandbar is widest and water is calmest during morning low tide.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="section section-alt">
+  <div class="container">
+    <span class="overline">Compare Packages</span>
+    <h2 class="section-title">What's Included</h2>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Standard<br><small>₱5,000</small></th>
+            <th class="th-featured">Premier<br><small>₱8,000</small></th>
+            <th>Combo Tour<br><small>Enquire</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Boat transfer to sandbar</td><td class="td-yes">✓</td><td class="td-yes th-featured">✓</td><td class="td-yes">✓</td></tr>
+          <tr><td>Floating cottage access</td><td class="td-yes">✓</td><td class="td-yes th-featured">✓</td><td class="td-yes">✓</td></tr>
+          <tr><td>Up to 10 persons</td><td class="td-yes">✓</td><td class="td-yes th-featured">✓</td><td class="td-yes">✓</td></tr>
+          <tr><td>Premium / larger cottage</td><td class="td-no">—</td><td class="td-yes th-featured">✓</td><td class="td-no">—</td></tr>
+          <tr><td>Priority placement</td><td class="td-no">—</td><td class="td-yes th-featured">✓</td><td class="td-no">—</td></tr>
+          <tr><td>Dedicated host</td><td class="td-no">—</td><td class="td-yes th-featured">✓</td><td class="td-no">—</td></tr>
+          <tr><td>Snorkeling included</td><td class="td-no">—</td><td class="td-no th-featured">—</td><td class="td-yes">✓</td></tr>
+          <tr><td>Starfish Sandbar tour</td><td class="td-no">—</td><td class="td-no th-featured">—</td><td class="td-yes">✓</td></tr>
+          <tr><td>Full-day guided tour</td><td class="td-no">—</td><td class="td-no th-featured">—</td><td class="td-yes">✓</td></tr>
+          <tr><td>Best for</td><td>Day trip groups</td><td class="th-featured">Special occasions</td><td>Explorers</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section">
+  <div class="container">
+    <span class="overline">What Guests Say</span>
+    <h2 class="section-title" style="text-align:center;">Recent Visitor Reviews</h2>
+    <p class="section-intro" style="text-align:center;margin:0 auto 40px;">Real experiences from recent visitors to Little Boracay sandbar.</p>
+    <div class="reviews-row">
+      <article class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <blockquote>"Booked the Premier Package for my birthday and it was beyond expectations. The cottage was spacious, the water was crystal clear, and the staff were amazing. Worth every peso!"</blockquote>
+        <div class="reviewer">
+          <div class="reviewer-avatar">A</div>
+          <div><strong>Aina C.</strong><span>Google · April 2026 · 2 weeks ago</span></div>
+        </div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <blockquote>"Did the Starfish Sandbar combo — absolutely magical. Little Boracay was already stunning but the Starfish Sandbar added something truly special to the day. Highly recommend!"</blockquote>
+        <div class="reviewer">
+          <div class="reviewer-avatar">M</div>
+          <div><strong>Marco R.</strong><span>Facebook · March 2026 · 5 weeks ago</span></div>
+        </div>
+      </article>
+      <article class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <blockquote>"Standard package for our barkada of 9 was perfect. Great value for the experience. Crystal clear water, floating cottage, beautiful sandbar. Everyone agreed it was the best day trip from Manila."</blockquote>
+        <div class="reviewer">
+          <div class="reviewer-avatar">K</div>
+          <div><strong>Kaye S.</strong><span>TripAdvisor · March 2026 · 6 weeks ago</span></div>
+        </div>
+      </article>
+    </div>
+    <div style="text-align:center;margin-top:28px;">
+      <a href="https://www.tripadvisor.com/Attraction_Review-g1209360-d17381413-Reviews-Little_Boracay-Calatagan_Batangas_Province_Calabarzon_Region_Luzon.html" target="_blank" rel="noopener" class="btn btn-outline">Read All Reviews on TripAdvisor →</a>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="container cta-band-inner">
+    <div>
+      <h2>Ready to Book Your Floating Cottage?</h2>
+      <p>Contact us today to check availability and reserve your Little Boracay experience.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="/contact" class="btn btn-yellow btn-lg">Book Now</a>
+      <a href="/faq" class="btn btn-outline-white btn-lg">Read the FAQ</a>
+    </div>
+  </div>
+</div>
+
+</BaseLayout>
+
+<style>
+.page-hero { padding: 60px 0 40px; background: linear-gradient(to bottom, rgba(13,43,107,.06), var(--bg)); border-bottom: 1px solid var(--border); }
+.page-hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; color: var(--text); margin: 10px 0 14px; letter-spacing: -.03em; }
+.page-lead { font-size: 1.05rem; color: var(--text-2); max-width: 620px; line-height: 1.7; }
+
+.pricing-intro { text-align: center; margin-bottom: 48px; }
+.pricing-intro .section-intro { margin-left: auto; margin-right: auto; }
+
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+
+.pricing-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--sh-sm);
+  position: relative;
+  transition: box-shadow .2s, transform .2s;
+}
+.pricing-card:hover { box-shadow: var(--sh-lg); transform: translateY(-3px); }
+
+.pricing-card-featured {
+  border-color: var(--navy);
+  box-shadow: 0 4px 30px rgba(13,43,107,.18);
+}
+.pricing-popular-badge {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: var(--yellow);
+  color: var(--navy);
+  font-size: .68rem;
+  font-weight: 800;
+  padding: 4px 11px;
+  border-radius: 999px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.pricing-card-combo { border-color: rgba(13,43,107,.25); background: rgba(13,43,107,.02); }
+
+.pricing-card-head { padding: 28px 24px 20px; border-bottom: 1px solid var(--border); }
+.pricing-card-featured .pricing-card-head { background: var(--navy); border-bottom-color: rgba(255,255,255,.1); }
+.pricing-card-combo .pricing-card-head { background: rgba(13,43,107,.05); }
+
+.pricing-tag {
+  font-size: .7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+.pricing-card-featured .pricing-tag { color: rgba(255,255,255,.6); }
+
+.pricing-amount { display: flex; align-items: baseline; gap: 2px; margin-bottom: 4px; }
+.currency { font-size: 1.4rem; font-weight: 700; color: var(--text); line-height: 1; }
+.amount { font-size: 3rem; font-weight: 800; color: var(--text); line-height: 1; letter-spacing: -.04em; }
+.pricing-card-featured .currency, .pricing-card-featured .amount { color: white; }
+
+.pricing-per { font-size: .78rem; color: var(--text-3); }
+.pricing-card-featured .pricing-per { color: rgba(255,255,255,.55); }
+
+.combo-icon { margin: 8px 0; }
+.combo-amount { display: block; }
+.combo-ask { font-size: 1.4rem; font-weight: 800; color: var(--navy); }
+
+.pricing-card-body { padding: 22px 24px; }
+.pricing-desc { font-size: .88rem; color: var(--text-2); line-height: 1.65; margin-bottom: 18px; }
+
+.pricing-features { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 14px; }
+.pricing-features li { display: flex; align-items: baseline; gap: 9px; font-size: .875rem; color: var(--text); }
+.pf-check { color: var(--navy); font-weight: 700; font-size: .8rem; flex-shrink: 0; }
+
+.combo-highlight { background: rgba(13,43,107,.07); border-left: 3px solid var(--navy); padding: 14px 16px; border-radius: 0 var(--r) var(--r) 0; margin-bottom: 18px; }
+.combo-tagline { font-size: .9rem; font-weight: 700; color: var(--navy); font-style: italic; margin-bottom: 8px !important; }
+
+/* Notes */
+.pricing-notes { margin-top: 56px; }
+.pricing-notes h3 { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 20px; letter-spacing: -.01em; }
+.notes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.note-item { display: flex; gap: 13px; align-items: flex-start; padding: 16px; background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--r-lg); }
+.note-icon { font-size: 1.3rem; flex-shrink: 0; }
+.note-item strong { display: block; font-size: .88rem; color: var(--text); margin-bottom: 4px; }
+.note-item p { font-size: .82rem; color: var(--text-2); margin: 0; line-height: 1.6; }
+
+/* Compare table */
+.compare-wrap { overflow-x: auto; }
+.compare-table { width: 100%; border-collapse: collapse; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--sh-sm); }
+.compare-table thead { background: var(--bg-alt2); }
+.compare-table th { padding: 14px 18px; text-align: center; font-weight: 700; font-size: .84rem; color: var(--text); border-bottom: 2px solid var(--border); }
+.compare-table th:first-child { text-align: left; }
+.compare-table th small { display: block; font-size: .76rem; font-weight: 500; color: var(--text-2); margin-top: 2px; }
+.th-featured { background: var(--navy) !important; color: white !important; }
+.th-featured small { color: rgba(255,255,255,.6) !important; }
+.compare-table td { padding: 11px 18px; text-align: center; font-size: .875rem; color: var(--text-2); border-bottom: 1px solid var(--border); }
+.compare-table td:first-child { text-align: left; font-weight: 500; color: var(--text); }
+.compare-table tr:last-child td { border-bottom: none; font-size: .82rem; font-weight: 600; color: var(--text); }
+.td-yes { color: var(--navy); font-weight: 700; font-size: 1rem; }
+.td-no { color: var(--text-3); }
+
+/* Reviews row */
+.reviews-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+@media (max-width: 1024px) { .pricing-grid { grid-template-columns: 1fr 1fr; } .notes-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; } .notes-grid { grid-template-columns: 1fr 1fr; } .reviews-row { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .notes-grid { grid-template-columns: 1fr; } }
+</style>

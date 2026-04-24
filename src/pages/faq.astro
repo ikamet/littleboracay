@@ -2,71 +2,23 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const faqs = [
-  {
-    q: "What is Little Boracay in Calatagan, Batangas?",
-    a: "Little Boracay is a natural tidal sandbar located off the western coast of Calatagan, Batangas, Philippines. It is known for its shallow turquoise waters, white sand, and floating bamboo cottages. It is not a beach resort — it is a natural coastal destination accessed by boat from Calatagan."
-  },
-  {
-    q: "Is Little Boracay a beach resort?",
-    a: "No. Little Boracay is a natural sandbar, not a developed beach resort. There are no hotel accommodations on the sandbar. Visitors spend the day at the sandbar and return to the mainland, or stay in nearby accommodations in Calatagan."
-  },
-  {
-    q: "How far is Little Boracay from Manila?",
-    a: "Calatagan, Batangas is approximately 3 to 4 hours from Metro Manila by car depending on traffic. The route typically uses the South Luzon Expressway (SLEX) and the STAR Tollway heading toward Batangas."
-  },
-  {
-    q: "How do you get to Little Boracay?",
-    a: "Drive from Manila to Calatagan, Batangas (3–4 hours). Then proceed to the coastal barangays where local boat operators offer short boat transfers to the Little Boracay sandbar. The boat ride takes approximately 10 to 20 minutes."
-  },
-  {
-    q: "Are floating cottages available at Little Boracay?",
-    a: "Yes. Floating bamboo cottages are one of the signature features of Little Boracay. These are available through local boat operators and provide shaded areas over the water for groups to relax, eat, and enjoy the sandbar environment."
-  },
-  {
-    q: "Is Little Boracay family-friendly?",
-    a: "Yes. The shallow, calm waters of the sandbar make it suitable for families, including young children. Adult supervision is always recommended when children are swimming."
-  },
-  {
-    q: "Is Little Boracay the same as Boracay Island in Aklan?",
-    a: "No. Little Boracay in Calatagan, Batangas is a completely separate destination from Boracay Island in Malay, Aklan. Little Boracay earned the nickname because of its similar white sand and turquoise water. Boracay Island is accessed by plane and ferry from Manila."
-  },
-  {
-    q: "What is the best time to visit Little Boracay?",
-    a: "Morning to early afternoon is generally the best time when tides are lowest and the sandbar is most visible. The dry season from November to May offers the most reliable weather. Typhoon season from June to October can bring rough seas and may affect boat operations."
-  },
-  {
-    q: "How far is Little Boracay from CaSoBe (Calatagan South Beach)?",
-    a: "Little Boracay and CaSoBe are both located in Calatagan, Batangas. They are separate destinations a short distance apart along the Calatagan coastline. Visitors often combine both in a single day trip to Calatagan."
-  },
-  {
-    q: "How far is Little Boracay from Stilts Beach Resort?",
-    a: "Both Little Boracay and Stilts Beach Resort are located in Calatagan, Batangas. They are nearby coastal destinations and can potentially be combined as part of a full day trip to the area."
-  },
-  {
-    q: "Can visitors swim at Little Boracay?",
-    a: "Yes. Swimming is one of the main activities at Little Boracay. The clear, shallow waters are ideal for swimming, wading, and relaxing. The calm conditions also make it suitable for snorkeling."
-  },
-  {
-    q: "Is drone photography allowed at Little Boracay?",
-    a: "Drone photography is popular at Little Boracay due to the stunning aerial views of the sandbar. Always follow Philippine drone regulations (CAAP rules) and check locally with operators about any restrictions on drone use at the sandbar."
-  },
-  {
-    q: "Where can I see visitor reviews of Little Boracay?",
-    a: "Visitor reviews and photos of Little Boracay can be found on TripAdvisor, Facebook (facebook.com/littleboracay and the community group facebook.com/groups/littleboracay), Google Maps, and Instagram."
-  },
-  {
-    q: "What should I bring to Little Boracay?",
-    a: "Recommended items include sunscreen, swimwear, waterproof sandals, a dry bag for valuables, cash (most operators don't take cards), drinking water, snacks or packed meals, hat, sunglasses, and optionally snorkeling gear and a waterproof camera."
-  }
+  { q: "What is Little Boracay in Calatagan, Batangas?", a: "Little Boracay is a natural tidal sandbar located off the western coast of Calatagan, Batangas, Philippines. It is known for its shallow turquoise waters, white sand, and iconic floating bamboo cottages. It is not a beach resort — it is a natural coastal destination accessed by boat from the coastal barangays of Calatagan." },
+  { q: "Is Little Boracay a beach resort?", a: "No. Little Boracay is a natural sandbar, not a developed beach resort. There are no hotel accommodations on the sandbar itself. Visitors spend the day at the sandbar and return to the mainland, or arrange overnight stays at nearby resorts in Calatagan." },
+  { q: "How far is Little Boracay from Manila?", a: "Calatagan, Batangas is approximately 3 to 4 hours from Metro Manila by car, depending on traffic conditions. The route typically uses the South Luzon Expressway (SLEX) and the STAR Tollway heading toward Batangas." },
+  { q: "How do I get to Little Boracay?", a: "Drive from Manila to Calatagan, Batangas via SLEX and STAR Tollway (3–4 hours). Navigate to the coastal barangays of Calatagan where local boat operators offer short boat transfers to the Little Boracay sandbar (10–20 minutes)." },
+  { q: "How do I book a floating cottage at Little Boracay?", a: "Contact us through our website contact form, message us on Facebook at facebook.com/littleboracay, or contact local operators directly in Calatagan. We recommend booking 2–3 days in advance, especially on weekends and Philippine holidays." },
+  { q: "Are floating cottages available at Little Boracay?", a: "Yes. Floating bamboo cottages are one of the defining features of Little Boracay. They are available through local boat operators and provide shaded, over-water spaces for groups to relax, eat, and enjoy the sandbar environment." },
+  { q: "Is Little Boracay the same as Boracay Island in Aklan?", a: "No. Little Boracay is a completely separate destination in Calatagan, Batangas. It earned the nickname because of similar white sand and turquoise water. Boracay Island is in Malay, Aklan and requires a flight and ferry from Manila." },
+  { q: "What is the best time to visit Little Boracay?", a: "Morning to early afternoon during low tide is best — the sandbar is widest and most accessible. The dry season from November to May offers the most reliable weather. Typhoon season (June to October) can bring rough seas and may affect boat operations." },
+  { q: "Is Little Boracay family-friendly?", a: "Yes. The shallow, calm waters make it perfect for families including young children. Adult supervision is always recommended when swimming." },
+  { q: "What should I bring to Little Boracay?", a: "Essentials: cash (PHP) — most operators don't accept cards; high-SPF sunscreen; swimwear and change of clothes; waterproof sandals; dry bag for phone and valuables; drinking water; packed food and snacks. Optional: snorkeling gear, waterproof camera, drone (check CAAP regulations)." },
+  { q: "How far is Little Boracay from CaSoBe or Stilts Beach Resort?", a: "Both CaSoBe (Calatagan South Beach) and Stilts Beach Resort are located nearby along the Calatagan coastline. Many visitors combine these stops in a single day trip to the area." },
+  { q: "Is Little Boracay accessible by public transport?", a: "There is no direct public transport to the Little Boracay jump-off points. Most visitors drive their own vehicle or hire a private vehicle from Manila. Some van services from Batangas City to Calatagan exist, but the boat jump-off points typically require a tricycle or additional transport once in Calatagan." },
+  { q: "Can you swim at Little Boracay?", a: "Yes. Swimming is one of the main activities at Little Boracay. The clear, shallow, calm waters are ideal for swimming, wading, and relaxing. The conditions are generally safe for non-swimmers and beginners." },
+  { q: "Is drone photography allowed at Little Boracay?", a: "Drone photography is popular at Little Boracay due to the stunning aerial views of the sandbar. Always follow CAAP (Civil Aviation Authority of the Philippines) regulations — register your drone, respect no-fly zones, and check with local operators about any specific restrictions." }
 ];
----
 
-<BaseLayout
-  title="Little Boracay FAQ | Frequently Asked Questions About Visiting"
-  description="Answers to the most common questions about visiting Little Boracay sandbar in Calatagan, Batangas — how to get there, floating cottages, best time to visit, and more."
->
-
-<script type="application/ld+json" slot="head">{JSON.stringify({
+const schema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": faqs.map(f => ({
@@ -74,74 +26,45 @@ const faqs = [
     "name": f.q,
     "acceptedAnswer": { "@type": "Answer", "text": f.a }
   }))
-})}</script>
-
-<section class="page-hero">
+};
+---
+<BaseLayout
+  title="Little Boracay FAQ | Frequently Asked Questions About Visiting"
+  description="Answers to the most common questions about visiting Little Boracay sandbar in Calatagan, Batangas — how to get there, floating cottages, booking, best time to visit, and more."
+  schema={schema}
+>
+<div class="page-hero">
   <div class="container">
-    <span class="badge badge-ocean">Visitor FAQ</span>
+    <span class="overline">FAQ</span>
     <h1>Frequently Asked Questions</h1>
-    <p class="page-lead">Everything travelers ask before visiting Little Boracay sandbar in Calatagan, Batangas — answered in full.</p>
+    <p class="page-lead">Everything travelers ask before visiting Little Boracay sandbar in Calatagan, Batangas.</p>
   </div>
-</section>
+</div>
 
 <section class="section">
   <div class="container faq-container">
-    {faqs.map((faq, i) => (
-      <details class="faq-item" open={i === 0}>
-        <summary>{faq.q}</summary>
-        <p>{faq.a}</p>
-      </details>
-    ))}
-  </div>
-</section>
-
-<section class="section cta-faq">
-  <div class="container" style="text-align:center;">
-    <h2>Still Have Questions?</h2>
-    <p>Join the Little Boracay Facebook community — thousands of visitors share tips, answers, and real-time updates about the sandbar.</p>
-    <div style="display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;">
-      <a href="https://facebook.com/groups/littleboracay" class="btn btn-primary" target="_blank" rel="noopener">Join FB Community</a>
-      <a href="https://facebook.com/littleboracay" class="btn btn-outline" target="_blank" rel="noopener">Facebook Page</a>
+    <div class="faq-accordion">
+      {faqs.map((faq, i) => (
+        <details class="faq-item" open={i === 0}>
+          <summary>{faq.q}</summary>
+          <div class="faq-answer"><p>{faq.a}</p></div>
+        </details>
+      ))}
+    </div>
+    <div style="margin-top:32px;text-align:center;">
+      <p style="font-size:.95rem;color:var(--text-2);margin-bottom:16px;">Still have questions? We're happy to help.</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <a href="/contact" class="btn btn-navy">Contact Us</a>
+        <a href="https://facebook.com/groups/littleboracay" target="_blank" rel="noopener" class="btn btn-outline">Join the FB Community</a>
+      </div>
     </div>
   </div>
 </section>
-
 </BaseLayout>
 
 <style>
-.page-hero {
-  padding: 60px 0 40px;
-  background: linear-gradient(to bottom, var(--color-ocean-light), var(--color-sand));
-}
-.page-hero h1 { font-size: 2.4rem; margin: 16px 0 16px; }
-.page-lead { font-size: 1.05rem; color: #444; max-width: 600px; }
-
-.faq-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
-.faq-item {
-  background: var(--color-white);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  overflow: hidden;
-  transition: border-color 0.15s;
-}
-.faq-item:hover { border-color: var(--color-ocean); }
-.faq-item[open] { border-color: var(--color-ocean); }
-.faq-item summary {
-  padding: 20px 24px;
-  font-weight: 500;
-  cursor: pointer;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.98rem;
-  color: var(--color-ink);
-}
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary::after { content: '+'; font-size: 1.3rem; color: var(--color-ocean); flex-shrink: 0; margin-left: 16px; }
-.faq-item[open] summary::after { content: '−'; }
-.faq-item p { padding: 0 24px 20px; font-size: 0.92rem; color: #555; line-height: 1.7; }
-
-.cta-faq h2 { font-size: 1.8rem; margin-bottom: 12px; }
-.cta-faq p { color: #444; max-width: 520px; margin: 0 auto; }
+.page-hero { padding: 60px 0 40px; background: linear-gradient(to bottom, rgba(13,43,107,.06), var(--bg)); border-bottom: 1px solid var(--border); }
+.page-hero h1 { font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 800; color: var(--text); margin: 10px 0 14px; letter-spacing: -.03em; }
+.page-lead { font-size: 1.05rem; color: var(--text-2); max-width: 560px; line-height: 1.7; }
+.faq-container { max-width: 820px; }
 </style>
