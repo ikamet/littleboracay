@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Floating Cottages at Little Boracay Calatagan | Bamboo Cottage Rentals"
+  description="Learn about the iconic floating bamboo cottages at Little Boracay sandbar in Calatagan, Batangas. The defining feature of a Little Boracay day trip experience."
+>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="badge badge-ocean">Floating Cottages</span>
+    <h1>Little Boracay Floating Cottages</h1>
+    <p class="page-lead">The iconic floating bamboo cottages of Little Boracay are one of the most unique and photographed features of any beach destination in Batangas.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cottage-intro">
+      <div>
+        <h2>What Are the Floating Cottages?</h2>
+        <p>The <strong>floating bamboo cottages</strong> at Little Boracay are one-of-a-kind structures built from native bamboo and nipa palm, anchored just above the surface of the shallow sandbar waters. Unlike traditional beach cottages on land, these structures float directly over the water — giving visitors the remarkable experience of relaxing, eating, and socializing while surrounded by the open sea.</p>
+        <p>The cottages are typically large enough for groups, featuring a shaded sitting area, sometimes a small table, and easy access to the water directly from the cottage platform. Visitors can step off the edge directly into the shallow, clear water.</p>
+        <p>The floating cottage experience is considered the signature activity of a Little Boracay trip — many visitors say that floating on the cottage, looking out at the horizon while the water gently moves beneath you, is unlike anything else in the Philippines within driving distance of Manila.</p>
+      </div>
+      <div class="cottage-visual">
+        <div class="cottage-callout">
+          <h3>🏡 Cottage Highlights</h3>
+          <ul>
+            <li>Built from native bamboo and nipa materials</li>
+            <li>Anchored above shallow sandbar waters</li>
+            <li>Shaded resting area for groups</li>
+            <li>Direct water access — step off and swim</li>
+            <li>360° open water views from the cottage</li>
+            <li>Available through local boat operators</li>
+            <li>Iconic photography backdrop</li>
+          </ul>
+          <a href="/visit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:20px;">Plan Your Visit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-white">
+  <div class="container">
+    <div class="section-header">
+      <h2>Tips for Enjoying the Floating Cottages</h2>
+    </div>
+    <div class="grid-3">
+      <div class="tip-card">
+        <div class="tip-num">01</div>
+        <h3>Book in Advance</h3>
+        <p>Floating cottage availability can be limited, especially on peak weekends and holidays. Contact local boat operators in advance to reserve your cottage for the day.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">02</div>
+        <h3>Arrive Early</h3>
+        <p>Getting to the jump-off point early ensures you secure a cottage and gives you more time on the sandbar during the best low-tide conditions in the morning.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">03</div>
+        <h3>Bring Your Own Food</h3>
+        <p>Food service options on the sandbar are limited. Packing a cooler with drinks and packed meals ensures you can stay comfortably for a full day.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">04</div>
+        <h3>Protect Valuables</h3>
+        <p>Bring a waterproof bag or dry box for your phone, wallet, and electronics. The cottage floor is above water but splashes and movement can get things wet.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">05</div>
+        <h3>Respect the Environment</h3>
+        <p>Little Boracay is a natural sandbar. Pack out all trash, avoid disturbing marine life, and do not use harmful sunscreen chemicals that can damage the marine ecosystem.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-num">06</div>
+        <h3>Check Weather & Tides</h3>
+        <p>The floating cottages may be unavailable during rough weather or unusually high tides. Always check conditions with local operators before the trip.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.page-hero {
+  padding: 60px 0 40px;
+  background: linear-gradient(to bottom, var(--color-ocean-light), var(--color-sand));
+}
+.page-hero h1 { font-size: 2.6rem; margin: 16px 0 16px; }
+.page-lead { font-size: 1.1rem; color: #444; max-width: 640px; }
+
+.cottage-intro {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+.cottage-intro h2 { font-size: 1.9rem; margin-bottom: 18px; }
+.cottage-intro p { color: #444; margin-bottom: 16px; line-height: 1.7; }
+.cottage-callout {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  padding: 28px;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 90px;
+}
+.cottage-callout h3 { font-size: 1.1rem; margin-bottom: 16px; }
+.cottage-callout ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.cottage-callout li { font-size: 0.9rem; color: #444; padding-left: 16px; position: relative; }
+.cottage-callout li::before { content: '•'; position: absolute; left: 0; color: var(--color-ocean); font-weight: 700; }
+
+.section-header { text-align: center; margin-bottom: 40px; }
+.section-header h2 { font-size: 2rem; }
+.bg-white { background: var(--color-white); }
+
+.tip-card {
+  padding: 24px;
+  background: var(--color-sand);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+.tip-num { font-family: var(--font-display); font-size: 2rem; color: var(--color-ocean-light); font-weight: 700; margin-bottom: 8px; }
+.tip-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.tip-card p { font-size: 0.9rem; color: #444; line-height: 1.65; }
+
+@media (max-width: 900px) {
+  .cottage-intro { grid-template-columns: 1fr; gap: 32px; }
+  .cottage-callout { position: static; }
+}
+</style>
