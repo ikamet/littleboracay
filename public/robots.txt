@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://littleboracay.com/sitemap-index.xml
