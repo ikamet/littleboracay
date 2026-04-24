@@ -1,64 +1,162 @@
-# Astro Starter Kit: Blog
+# Little Boracay — Astro + Cloudflare Pages
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/astro-blog-starter-template)
+Official website for **littleboracay.com** — built with Astro, deployed on Cloudflare Pages via GitHub Actions.
 
-![Astro Template Preview](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+## Stack
+- **Framework:** [Astro](https://astro.build/) v4
+- **Hosting:** [Cloudflare Pages](https://pages.cloudflare.com/)
+- **CI/CD:** GitHub Actions (auto-deploy on push to `main`)
+- **Integrations:** `@astrojs/sitemap`, `@astrojs/mdx`
 
-<!-- dash-content-start -->
+---
 
-Create a blog with Astro and deploy it on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
-
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-- ✅ Built-in Observability logging
-
-<!-- dash-content-end -->
-
-## Getting Started
-
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
+## Local Development
 
 ```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/astro-blog-starter-template
+npm install
+npm run dev
 ```
 
-A live public deployment of this template is available at [https://astro-blog-starter-template.templates.workers.dev](https://astro-blog-starter-template.templates.workers.dev)
+Site runs at `http://localhost:4321`
 
-## 🚀 Project Structure
+---
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Build
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+npm run build
+```
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+Output goes to `/dist`
 
-Any static assets, like images, can be placed in the `public/` directory.
+---
 
-## 🧞 Commands
+## Deploy to Cloudflare Pages
 
-All commands are run from the root of the project, from a terminal:
+### 1. Create Cloudflare Pages project
 
-| Command                           | Action                                           |
-| :-------------------------------- | :----------------------------------------------- |
-| `npm install`                     | Installs dependencies                            |
-| `npm run dev`                     | Starts local dev server at `localhost:4321`      |
-| `npm run build`                   | Build your production site to `./dist/`          |
-| `npm run preview`                 | Preview your build locally, before deploying     |
-| `npm run astro ...`               | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help`         | Get help using the Astro CLI                     |
-| `npm run build && npm run deploy` | Deploy your production site to Cloudflare        |
-| `npm wrangler tail`               | View real-time logs for all Workers              |
+1. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/)
+2. Go to **Workers & Pages → Create → Pages**
+3. Connect your GitHub repository
+4. Set build settings:
+   - **Framework preset:** Astro
+   - **Build command:** `npm run build`
+   - **Build output directory:** `dist`
 
-## 👀 Want to learn more?
+### 2. Add GitHub Secrets
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+In your GitHub repo → Settings → Secrets and variables → Actions, add:
 
-## Credit
+| Secret | Value |
+|--------|-------|
+| `CLOUDFLARE_API_TOKEN` | Your Cloudflare API token (with Pages:Edit permission) |
+| `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare Account ID |
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+**To get your Cloudflare API Token:**
+1. Go to [dash.cloudflare.com/profile/api-tokens](https://dash.cloudflare.com/profile/api-tokens)
+2. Click **Create Token**
+3. Use **Edit Cloudflare Workers** template OR create custom token with `Pages: Edit` permission
+4. Copy token into GitHub secret
+
+**To get your Account ID:**
+- Found in Cloudflare Dashboard right sidebar, or URL: `dash.cloudflare.com/<ACCOUNT_ID>`
+
+### 3. Push to main
+
+Every push to `main` automatically builds and deploys to Cloudflare Pages.
+
+---
+
+## Site Structure
+
+```
+src/
+  layouts/
+    BaseLayout.astro       # SEO head, OG tags, schema, shell nav/footer
+                           # Pass noShell={true} to skip shell (used by index)
+  pages/
+    index.astro            # ★ SINGLE-PAGE SITE — all sections with #anchor nav
+                           #   Sections: #hero #about #activities #visit
+                           #            #reviews #faq #contact
+                           #   Includes: Plan Your Visit form + Contact form
+    visit.astro            # Standalone travel guide (blog/SEO use)
+    sandbar.astro          # Sandbar deep-dive page
+    cottages.astro         # Floating cottages page
+    about.astro            # About page
+    faq.astro              # Full FAQ with schema markup
+    blog/
+      index.astro          # Blog listing
+      how-to-get-to-little-boracay.astro  # Key SEO blog post
+  styles/
+    global.css             # Global styles + BaseLayout shell utilities
+public/
+  logo.png                 # Little Boracay circular logo
+  favicon.svg
+  robots.txt
+.github/
+  workflows/
+    deploy.yml             # Auto-deploy to Cloudflare Pages on push to main
+```
+
+## Single-Page Navigation
+
+The homepage (`index.astro`) is a **single-page site** using `#anchor` links for all navigation:
+
+| Section | Anchor | Content |
+|---------|--------|---------|
+| Hero | `#hero` | Full-width hero with logo, headline, stats |
+| About | `#about` | Destination info + quick facts card |
+| Activities | `#activities` | 6 activity cards |
+| Plan a Visit | `#visit` | Step-by-step guide + Plan Your Visit form |
+| Reviews | `#reviews` | TripAdvisor reviews + ratings card |
+| FAQ | `#faq` | 8 FAQs with schema markup |
+| Contact | `#contact` | Contact channels + Contact form |
+
+All nav links, footer links, and CTAs use `href="#section"` with smooth-scroll JS.
+
+---
+
+## SEO / AEO / GEO Features
+
+- ✅ Full structured data (TouristAttraction, FAQPage, HowTo, Article schemas)
+- ✅ Open Graph + Twitter Card meta tags
+- ✅ Geo meta tags (region, placename, coordinates)
+- ✅ Auto-generated XML sitemap via `@astrojs/sitemap`
+- ✅ Robots.txt with sitemap reference
+- ✅ Speakable content markup for AI assistant citation
+- ✅ Canonical URLs on every page
+- ✅ Mobile-responsive design
+- ✅ Semantic HTML with proper heading hierarchy
+- ✅ Fast Cloudflare CDN delivery (Core Web Vitals optimized)
+
+---
+
+## Adding New Blog Posts
+
+Create a new `.astro` file in `src/pages/blog/`:
+
+```astro
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Post Title" description="Post description">
+  <!-- Article content -->
+</BaseLayout>
+```
+
+Then add it to the blog index in `src/pages/blog/index.astro`.
+
+---
+
+## Custom Domain
+
+1. In Cloudflare Pages → Your project → Custom domains
+2. Add `littleboracay.com` and `www.littleboracay.com`
+3. Cloudflare will handle DNS automatically if domain is on Cloudflare
+
+---
+
+## Support
+
+For destination information: [facebook.com/littleboracay](https://facebook.com/littleboracay)
+For visitor community: [facebook.com/groups/littleboracay](https://facebook.com/groups/littleboracay)
