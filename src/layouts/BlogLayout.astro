@@ -1,0 +1,142 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: string;
+  dateModified?: string;
+  tag: string;
+  schema?: object;
+}
+
+const { title, description, date, dateModified, tag, schema } = Astro.props;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "datePublished": date,
+  "dateModified": dateModified || date,
+  "author": { "@type": "Organization", "name": "LittleBoracay.com", "url": "https://littleboracay.com" },
+  "publisher": { "@type": "Organization", "name": "Little Boracay", "url": "https://littleboracay.com" },
+  "about": {
+    "@type": "TouristAttraction",
+    "name": "Little Boracay Sandbar",
+    "address": { "@type": "PostalAddress", "addressLocality": "Calatagan", "addressRegion": "Batangas", "addressCountry": "PH" }
+  }
+};
+
+const schemas = schema ? [articleSchema, schema] : [articleSchema];
+---
+
+<BaseLayout title={title} description={description} schema={schemas} type="article">
+  <div class="post-hero">
+    <div class="container">
+      <div class="post-breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <a href="/blog">Blog</a>
+        <span>›</span>
+        <span class="post-tag-crumb">{tag}</span>
+      </div>
+      <h1>{title}</h1>
+      <p class="post-lead">{description}</p>
+      <div class="post-meta">
+        <time datetime={date}>{new Date(date).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' })}</time>
+        <span>·</span>
+        <span>By LittleBoracay.com</span>
+        <span>·</span>
+        <a href="/blog">{tag}</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container post-layout">
+      <article class="post-content">
+        <slot />
+      </article>
+      <aside class="post-sidebar">
+        <div class="sidebar-block">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/sandbar">The Sandbar →</a></li>
+            <li><a href="/cottages">Floating Cottages →</a></li>
+            <li><a href="/visit">Travel Guide →</a></li>
+            <li><a href="/things-to-do">Things to Do →</a></li>
+            <li><a href="/calatagan">Calatagan Guide →</a></li>
+            <li><a href="/faq">FAQ →</a></li>
+            <li><a href="/contact">Book Now →</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-block sidebar-cta">
+          <h4>Ready to Visit?</h4>
+          <p>Book your floating cottage at Little Boracay sandbar in Calatagan, Batangas.</p>
+          <a href="/contact" class="btn btn-navy btn-sm" style="width:100%;justify-content:center;margin-top:12px;">Book Now →</a>
+        </div>
+        <div class="sidebar-block">
+          <h4>Reviews</h4>
+          <a href="https://www.tripadvisor.com/Attraction_Review-g1209360-d17381413-Reviews-Little_Boracay-Calatagan_Batangas_Province_Calabarzon_Region_Luzon.html" target="_blank" rel="noopener" class="sidebar-review-link">
+            <svg width="13" height="13" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9" fill="#00AF87"/><circle cx="10" cy="10" r="4" fill="white"/><circle cx="10" cy="10" r="2" fill="#00AF87"/></svg>
+            TripAdvisor · ★ 4.3
+          </a>
+          <a href="https://maps.app.goo.gl/dDyEJhYkpxW2gxCt8" target="_blank" rel="noopener" class="sidebar-review-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="#EA4335"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            Google Maps
+          </a>
+          <a href="https://www.trustpilot.com/review/littleboracay.com" target="_blank" rel="noopener" class="sidebar-review-link">
+            <svg width="13" height="13" viewBox="0 0 20 20"><rect width="18" height="18" x="1" y="1" rx="2.5" fill="#00B67A"/><text x="2.5" y="14" font-size="11" fill="white" font-family="sans-serif">★</text></svg>
+            Trustpilot
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.post-hero { padding: 52px 0 36px; background: linear-gradient(to bottom, rgba(13,43,107,.06), var(--bg)); border-bottom: 1px solid var(--border); }
+.post-breadcrumb { display: flex; align-items: center; gap: 6px; font-size: .76rem; color: var(--text-3); margin-bottom: 14px; }
+.post-breadcrumb a { color: var(--text-2); text-decoration: none; }
+.post-breadcrumb a:hover { color: var(--navy); }
+.post-breadcrumb span { color: var(--text-3); }
+.post-tag-crumb { color: var(--navy); font-weight: 600; }
+.post-hero h1 { font-size: clamp(1.7rem, 3.5vw, 2.5rem); font-weight: 800; color: var(--text); margin-bottom: 14px; letter-spacing: -.025em; max-width: 780px; line-height: 1.2; }
+.post-lead { font-size: 1.02rem; color: var(--text-2); max-width: 680px; line-height: 1.7; margin-bottom: 16px; }
+.post-meta { font-size: .8rem; color: var(--text-3); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.post-meta a { color: var(--navy); text-decoration: none; }
+.post-layout { display: grid; grid-template-columns: 1fr 280px; gap: 56px; align-items: start; }
+.post-content { min-width: 0; }
+.post-content h2 { font-size: 1.5rem; font-weight: 800; color: var(--text); margin: 36px 0 14px; letter-spacing: -.02em; }
+.post-content h3 { font-size: 1.15rem; font-weight: 700; color: var(--text); margin: 28px 0 10px; letter-spacing: -.01em; }
+.post-content p { font-size: .97rem; color: var(--text-2); line-height: 1.75; margin-bottom: 16px; }
+.post-content strong { color: var(--text); }
+.post-content ul, .post-content ol { padding-left: 22px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px; }
+.post-content li { font-size: .97rem; color: var(--text-2); line-height: 1.65; }
+.post-content .callout { background: rgba(13,43,107,.06); border-left: 3px solid var(--navy); padding: 14px 18px; border-radius: 0 var(--r) var(--r) 0; margin: 20px 0; }
+.post-content .callout p { margin: 0; font-size: .9rem; }
+.post-content table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: .88rem; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--sh-xs); }
+.post-content thead { background: var(--navy); color: white; }
+.post-content th { padding: 11px 14px; text-align: left; font-weight: 600; font-size: .82rem; }
+.post-content td { padding: 9px 14px; color: var(--text-2); border-bottom: 1px solid var(--border); }
+.post-content tr:last-child td { border-bottom: none; }
+.post-content tr:nth-child(even) { background: var(--bg-alt); }
+.post-content td:first-child { font-weight: 600; color: var(--text); }
+
+.post-sidebar { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 14px; }
+.sidebar-block { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 18px 20px; }
+.sidebar-block h4 { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--navy); margin-bottom: 12px; }
+.sidebar-block ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.sidebar-block li a { font-size: .86rem; color: var(--text-2); text-decoration: none; transition: color .15s; }
+.sidebar-block li a:hover { color: var(--navy); }
+.sidebar-cta { background: var(--navy); border-color: var(--navy-l); }
+.sidebar-cta h4 { color: rgba(255,255,255,.6); }
+.sidebar-cta p { font-size: .84rem; color: rgba(255,255,255,.72); margin: 0; }
+.sidebar-review-link { display: flex; align-items: center; gap: 7px; font-size: .84rem; color: var(--text-2); text-decoration: none; padding: 7px 0; border-bottom: 1px solid var(--border); transition: color .15s; }
+.sidebar-review-link:last-child { border-bottom: none; }
+.sidebar-review-link:hover { color: var(--navy); }
+
+@media (max-width: 900px) { .post-layout { grid-template-columns: 1fr; } .post-sidebar { position: static; } }
+</style>
